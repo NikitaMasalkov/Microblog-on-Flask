@@ -15,9 +15,8 @@ from app.forms import RegistrationForm, InputForm
 @app.route('/index')
 @login_required
 def index():
-    input_form = InputForm
     posts = Post.query.all()
-    return render_template('index.html', title='Home', posts=posts, input_form = input_form)
+    return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
