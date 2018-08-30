@@ -9,7 +9,7 @@ from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, InputForm
+from app.forms import RegistrationForm
 
 @app.route('/')
 @app.route('/index')
