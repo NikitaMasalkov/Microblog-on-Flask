@@ -32,6 +32,12 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
+class Time(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hours = db.Column(db.Integer)
+    minutes = db.Column(db.Integer)
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
