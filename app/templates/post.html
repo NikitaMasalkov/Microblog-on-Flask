@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Post</h1>
+    <form action="" method="post" id="textform" >
+        <div class="input text">
+                {{ form.post_text.label }}
+            <br>
+            {{ form.post_text (cols="35", rows="20") }}
+            </div>
+
+            <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
+
+        </form>
+
+
+
+        {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+
+
+<p><a href="{{ url_for('delete') }}"> <em>Click to delete all posts</em></a></p>
+{% endblock %}
