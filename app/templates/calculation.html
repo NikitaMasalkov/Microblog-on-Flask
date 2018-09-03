@@ -9,18 +9,19 @@
 <h2>Add new activity:</h2>
 <form action="" method="post">
         <p>
-            {{ form.hours.label}}<br>
-            {{ form.hours(size=32) }} <br>
+            {{ form.hoursf.label}}<br>
+            {{ form.hoursf(size=32) }} <br>
 
         </p>
         <p>
-            {{ form.minutes.label}}<br>
-            {{ form.minutes(size=32) }} <br>
+            {{ form.minutesf.label}}<br>
+            {{ form.minutesf(size=32) }} <br>
 
         </p>
-        <p>{{ form.submit() }}</p>
+         <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
     </form>
 {%endif%}
-{% if a == False  %}
 
 {% endblock %}

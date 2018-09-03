@@ -106,25 +106,27 @@ def user(username):
 def delete_activities():
     return render_template ('delete_activities.html')
 
-@app.route('/calculator')
+@app.route('/calculator', methods=['GET', 'POST'])
 def calculator():
+    form = TimeForm()
     now = datetime.now()
-    today = str(now.day) + " " + str(now.month) + " " + str(now.year)
     total_time = Time.query.get(1)
+    if form.validate():
+        add_minutes = form.minutesf.data
+        add_hours = form.hoursf.data
+        total_time.hours += add_hours
+        total_time.minutes += add_minutes
+        db.session.add(total_time)
+        db.session.commit()
+        return redirect(url_for('post'))
+    today = str(now.day) + " " + str(now.month) + " " + str(now.year)
+
     minutes = total_time.minutes
     hours = total_time.hours
     if minutes >0 or hours > 0:
         a = True
     else:
         a = False
-    form = TimeForm()
-    if form.validate_on_submit():
-        add_minutes = form.minutesf.data
-        add_hours = form.hoursf.data
-
-            return redirect(url_for('login'))
-
-
     return render_template('calculation.html', minutes = minutes, hours=hours, a = a, form = form, today = today)
 
 

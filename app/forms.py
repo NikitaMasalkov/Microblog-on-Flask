@@ -19,7 +19,7 @@ class ReusableForm(Form):
 class TimeForm(Form):
     hoursf = IntegerField('Hours',  validators=[DataRequired()])
     minutesf = IntegerField('Minutes', validators=[DataRequired()])
-    submit = SubmitField("Calculate")
+
 
 
 
