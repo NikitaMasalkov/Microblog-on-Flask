@@ -3,14 +3,16 @@ from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user, login_user
-from app.models import User, Post
+from app.models import User, Post, Time
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, ReusableForm, EditProfileForm
+from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm
 from datetime import datetime
+from datetime import *
+
 
 
 @app.before_request
@@ -43,6 +45,7 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
 
 @app.route('/logout')
 def logout():
@@ -87,6 +90,7 @@ def delete():
 
     return render_template('delete.html', title='Delete', posts=posts)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -96,6 +100,33 @@ def user(username):
         {'author': user, 'body': 'Test post #2'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
+
+@app.route ('/delete_activities')
+def delete_activities():
+    return render_template ('delete_activities.html')
+
+@app.route('/calculator')
+def calculator():
+    now = datetime.now()
+    today = str(now.day) + " " + str(now.month) + " " + str(now.year)
+    total_time = Time.query.get(1)
+    minutes = total_time.minutes
+    hours = total_time.hours
+    if minutes >0 or hours > 0:
+        a = True
+    else:
+        a = False
+    form = TimeForm()
+    if form.validate_on_submit():
+        add_minutes = form.minutesf.data
+        add_hours = form.hoursf.data
+
+            return redirect(url_for('login'))
+
+
+    return render_template('calculation.html', minutes = minutes, hours=hours, a = a, form = form, today = today)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required

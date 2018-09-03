@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   <h1>Ultra time calculator</h1>
+{% if a == True  %}
+<p> Today is {{today}}. For now, you have coded for {{hours}} hours and {{minutes}} minutes</p>
+<p><a href="{{ url_for('delete_activities') }}"> <em>Click to delete all activities</em></a></p>
+<h2>Add new activity:</h2>
+<form action="" method="post">
+        <p>
+            {{ form.hours.label}}<br>
+            {{ form.hours(size=32) }} <br>
+
+        </p>
+        <p>
+            {{ form.minutes.label}}<br>
+            {{ form.minutes(size=32) }} <br>
+
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{%endif%}
+{% if a == False  %}
+
+{% endblock %}
