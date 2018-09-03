@@ -80,6 +80,7 @@ def post():
 
     return render_template('post.html', title='Post', form = form, posts = posts)
 
+
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 
@@ -111,14 +112,6 @@ def calculator():
     form = TimeForm()
     now = datetime.now()
     total_time = Time.query.get(1)
-    if form.validate():
-        add_minutes = form.minutesf.data
-        add_hours = form.hoursf.data
-        total_time.hours += add_hours
-        total_time.minutes += add_minutes
-        db.session.add(total_time)
-        db.session.commit()
-        return redirect(url_for('post'))
     today = str(now.day) + " " + str(now.month) + " " + str(now.year)
 
     minutes = total_time.minutes
@@ -127,6 +120,17 @@ def calculator():
         a = True
     else:
         a = False
+
+
+    if request.method == 'POST':
+        add_minutes = int(form.minutesf.data)
+        add_hours = int(form.hoursf.data)
+        total_time.hours += add_hours
+        total_time.minutes += add_minutes
+        db.session.add(total_time)
+        db.session.commit()
+        return redirect(url_for('post'))
+
     return render_template('calculation.html', minutes = minutes, hours=hours, a = a, form = form, today = today)
 
 
