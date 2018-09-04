@@ -15,10 +15,10 @@
     <thead>
     <tr>
         <th colspan="6">
-            <h1>Spectacular activity table</h1>
+            <h1 class="spectacular">Spectacular activity table</h1>
         </th>
     </tr>
-    <tr>
+    <tr class="borders">
         <th><h2>Дата</h2></th>
         <th><h2>Планировалось на день</h2></th>
         <th><h2>Было сделано</h2></th>
@@ -27,15 +27,17 @@
         <th><h2>Комментарии</h2></th>
     </tr>
     </tr>
+    {% for post in posts %}
     <tr>
-        <td><p>12.07</p></td>
-        <td><p>План</p></td>
+        <td><p>{{ post.author.username }}</p></td>
+        <td><p>{{ post.body}}</p></td>
         <td><p>План</p></td>
         <td><p>3:21</p></td>
         <td><p>Не надо</p></td>
         <td><p>На линуксе играть можно, но только фиксированное кол-во времени,
 например по выходным,</p></td>
     </tr>
+    {% endfor %}
     </thead>
 </table>
 </body>
