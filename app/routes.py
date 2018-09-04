@@ -175,3 +175,6 @@ def edit_profile():
                            form=form)
 
 
+@app.route('/activity_manager', methods=['GET', 'POST'])
+def activity_manager():
+    return render_template('activity_manager.html')
