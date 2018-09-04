@@ -105,6 +105,10 @@ def user(username):
 
 @app.route ('/delete_activities')
 def delete_activities():
+    activities = Time.query.all()
+    for ac in activities:
+        db.session.delete(ac)
+    db.session.commit()
     return render_template ('delete_activities.html')
 
 @app.route('/calculator', methods=['GET', 'POST'])
@@ -113,23 +117,34 @@ def calculator():
     now = datetime.now()
     total_time = Time.query.get(1)
     today = str(now.day) + " " + str(now.month) + " " + str(now.year)
-
-    minutes = total_time.minutes
-    hours = total_time.hours
-    if minutes >0 or hours > 0:
-        a = True
-    else:
+    if total_time is None:
         a = False
+        minutes = 0
+        hours = 0
+        if request.method == 'POST':
+          new_entry = Time(hours = 0 , minutes = 0)
+          add_minutes = int(form.minutesf.data)
+          add_hours = int(form.hoursf.data)
+          new_entry.hours += add_hours
+          new_entry.minutes += add_minutes
+          db.session.add(new_entry)
+          db.session.commit()
+          flash('Time began tracking')
+          return redirect(url_for('calculator'))
 
-
-    if request.method == 'POST':
-        add_minutes = int(form.minutesf.data)
-        add_hours = int(form.hoursf.data)
-        total_time.hours += add_hours
-        total_time.minutes += add_minutes
-        db.session.add(total_time)
-        db.session.commit()
-        return redirect(url_for('post'))
+    else:
+        a = True
+        minutes = total_time.minutes
+        hours = total_time.hours
+        if request.method == 'POST':
+          add_minutes = int(form.minutesf.data)
+          add_hours = int(form.hoursf.data)
+          total_time.hours += add_hours
+          total_time.minutes += add_minutes
+          db.session.add(total_time)
+          db.session.commit()
+          flash('Activity has been added')
+          return redirect(url_for('calculator'))
 
     return render_template('calculation.html', minutes = minutes, hours=hours, a = a, form = form, today = today)
 

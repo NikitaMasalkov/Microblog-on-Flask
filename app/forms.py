@@ -16,9 +16,10 @@ class ReusableForm(Form):
     post_text = TextAreaField('Post input:', validators=[DataRequired()])
 
 
-class TimeForm(Form):
-    hoursf = TextAreaField('Hours')
-    minutesf = TextAreaField('Minutes')
+class TimeForm(FlaskForm):
+    hoursf = IntegerField('Hours', validators=[DataRequired()])
+    minutesf = IntegerField('Minutes', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 
 

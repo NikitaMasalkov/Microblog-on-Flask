@@ -24,4 +24,23 @@
     </form>
 {%endif%}
 
+{% if a == False  %}
+<p> Today is {{today}}. It seems, you still have no any activities saved. Please, save your overall time spent coding</p>
+<h2>Overall time:</h2>
+<form action="" method="post">
+        <p>
+            {{ form.hoursf.label}}<br>
+            {{ form.hoursf(size=32) }} <br>
+
+        </p>
+        <p>
+            {{ form.minutesf.label}}<br>
+            {{ form.minutesf(size=32) }} <br>
+
+        </p>
+         <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
+    </form>
+{%endif%}
 {% endblock %}
