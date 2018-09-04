@@ -125,6 +125,10 @@ def calculator():
           new_entry = Time(hours = 0 , minutes = 0)
           add_minutes = int(form.minutesf.data)
           add_hours = int(form.hoursf.data)
+          if add_minutes > 59:
+              bonus_hours, add_minutes = divmod(add_minutes, 60)
+              add_hours += bonus_hours
+
           new_entry.hours += add_hours
           new_entry.minutes += add_minutes
           db.session.add(new_entry)
@@ -139,8 +143,13 @@ def calculator():
         if request.method == 'POST':
           add_minutes = int(form.minutesf.data)
           add_hours = int(form.hoursf.data)
-          total_time.hours += add_hours
-          total_time.minutes += add_minutes
+          hours += add_hours
+          minutes += add_minutes
+          if minutes > 59:
+              b_hours, minutes = divmod(minutes, 60)
+              hours += b_hours
+          total_time.hours = hours
+          total_time.minutes = minutes
           db.session.add(total_time)
           db.session.commit()
           flash('Activity has been added')
