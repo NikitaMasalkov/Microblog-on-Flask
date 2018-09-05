@@ -28,26 +28,26 @@ class User(UserMixin, db.Model):
 class Day(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
-    todos = db.relationship('Todo', backref='activity_day', lazy='dynamic')
     overall = db.Column(db.String(140))
     conclusion = db.Column(db.String(140))
-    comments =  db.relationship('Comment', backref='container', lazy='dynamic')
+    activities = db.relationship('Activity', backref='date', lazy='dynamic')
+    comments =  db.relationship('Comment', backref='comment_date', lazy='dynamic')
 
     def __repr__(self):
-        return '<Activity {}>'.format(self.timestamp)
+        return '<Day {}>'.format(self.timestamp)
 
 
-class Todo(db.Model):
+class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    progress = db.Column(db.String(140))
-    ifdone = db.column(db.Boolean)
+    name = db.Column(db.String(140))
     hours = db.Column(db.Integer)
     minutes = db.Column(db.Integer)
-    day_id = db.Column(db.Integer, db.ForeignKey('day.id'))
+    completion = db.column(db.Boolean)
+
+
 
     def __repr__(self):
-        return '<Activity {}>'.format(self.body)
+        return '<Activity {}>'.format(self.name)
 
 
 
@@ -63,16 +63,17 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     day = db.Column(db.Integer, db.ForeignKey('day.id'))
 
+    def __repr__(self):
+        return '<Comment {}>'.format(self.body)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
-
 
 
 class Time(db.Model):
