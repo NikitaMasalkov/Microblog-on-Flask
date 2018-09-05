@@ -2,7 +2,7 @@ from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user, login_user
-from app.models import User, Post, Time
+from app.models import User, Post, Time, Comment, Day
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -68,6 +68,7 @@ def register():
 def post():
     form = ReusableForm(request.form)
     posts = Post.query.all()
+    comments = Comment.query.all()
     if form.validate():
         p = Post(body = form.post_text.data, user_id = current_user.id)
         db.session.add(p)
@@ -75,7 +76,7 @@ def post():
         flash('Congratulations, you have created post!')
         return redirect(url_for('post'))
 
-    return render_template('post.html', title='Post', form = form, posts = posts)
+    return render_template('post.html', title='Post', form = form, posts = posts, comments = comments)
 
 
 @app.route('/delete', methods=['GET', 'POST'])
@@ -174,5 +175,5 @@ def edit_profile():
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
-    posts = Post.query.all()
-    return render_template('activity_manager.html', posts = posts)
+    days = Day.query.all()
+    return render_template('activity_manager.html', days = days)

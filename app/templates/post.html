@@ -20,7 +20,10 @@
         {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
-
+{br}
+{% for comment in comments %}
+    <div><p>{{ comment.comment_author.username }} says: <b>{{ comment.body }}</b> this is according {{comment.comment_date.timestamp}}</p></div>
+    {% endfor %}
 
 <p><a href="{{ url_for('delete') }}"> <em>Click to delete all posts</em></a></p>
 {% endblock %}
