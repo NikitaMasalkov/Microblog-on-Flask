@@ -1,7 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms import Form, StringField, PasswordField, BooleanField, SubmitField, TextAreaField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
+
+
+
+
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -11,6 +15,14 @@ class LoginForm(FlaskForm):
 
 class ReusableForm(Form):
     post_text = TextAreaField('Post input:', validators=[DataRequired()])
+
+
+
+class TimeForm(FlaskForm):
+    hoursf = IntegerField('Hours', validators=[DataRequired()])
+    minutesf = IntegerField('Minutes', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])

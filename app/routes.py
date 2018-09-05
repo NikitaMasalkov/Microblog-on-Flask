@@ -2,14 +2,16 @@ from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user, login_user
-from app.models import User, Post
+from app.models import User, Post, Time
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, ReusableForm, EditProfileForm
+from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm
 from datetime import datetime
+from datetime import *
+
 
 @app.before_request
 def before_request():
@@ -40,6 +42,7 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
 
 @app.route('/logout')
 def logout():
@@ -74,6 +77,7 @@ def post():
 
     return render_template('post.html', title='Post', form = form, posts = posts)
 
+
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
 
@@ -84,6 +88,7 @@ def delete():
 
     return render_template('delete.html', title='Delete', posts=posts)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -93,6 +98,62 @@ def user(username):
         {'author': user, 'body': 'Test post #2'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
+
+@app.route ('/delete_activities')
+def delete_activities():
+    activities = Time.query.all()
+    for ac in activities:
+        db.session.delete(ac)
+    db.session.commit()
+    return render_template ('delete_activities.html')
+
+@app.route('/calculator', methods=['GET', 'POST'])
+def calculator():
+    form = TimeForm()
+    now = datetime.now()
+    total_time = Time.query.get(1)
+    today = str(now.day) + " " + str(now.month) + " " + str(now.year)
+    if total_time is None:
+        a = False
+        minutes = 0
+        hours = 0
+        if request.method == 'POST':
+          new_entry = Time(hours = 0 , minutes = 0)
+          add_minutes = int(form.minutesf.data)
+          add_hours = int(form.hoursf.data)
+          if add_minutes > 59:
+              bonus_hours, add_minutes = divmod(add_minutes, 60)
+              add_hours += bonus_hours
+
+          new_entry.hours += add_hours
+          new_entry.minutes += add_minutes
+          db.session.add(new_entry)
+          db.session.commit()
+          flash('Time began tracking')
+          return redirect(url_for('calculator'))
+
+    else:
+        a = True
+        minutes = total_time.minutes
+        hours = total_time.hours
+        if request.method == 'POST':
+          add_minutes = int(form.minutesf.data)
+          add_hours = int(form.hoursf.data)
+          hours += add_hours
+          minutes += add_minutes
+          if minutes > 59:
+              b_hours, minutes = divmod(minutes, 60)
+              hours += b_hours
+          total_time.hours = hours
+          total_time.minutes = minutes
+          db.session.add(total_time)
+          db.session.commit()
+          flash('Activity has been added')
+          return redirect(url_for('calculator'))
+
+    return render_template('calculation.html', minutes = minutes, hours=hours, a = a, form = form, today = today)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -109,3 +170,9 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+
+@app.route('/activity_manager', methods=['GET', 'POST'])
+def activity_manager():
+    posts = Post.query.all()
+    return render_template('activity_manager.html', posts = posts)
