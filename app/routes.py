@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect, url_for
@@ -14,13 +13,11 @@ from datetime import datetime
 from datetime import *
 
 
-
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-
 
 @app.route('/')
 @app.route('/index')
