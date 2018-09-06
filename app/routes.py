@@ -2,7 +2,7 @@ from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect, url_for
 from flask_login import current_user, login_user
-from app.models import User, Post, Time, Comment, Day
+from app.models import User, Post, Time, Comment, Day, Activity
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -172,8 +172,12 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
+def taking_activities(day):
+    return Activity.query.filter(Activity.day_id == day.id)
+
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
     days = Day.query.all()
-    return render_template('activity_manager.html', days = days)
+    activitiess = taking_activities(Day.query.get(1))
+    return render_template('activity_manager.html', days = days, activitiess = activitiess)
