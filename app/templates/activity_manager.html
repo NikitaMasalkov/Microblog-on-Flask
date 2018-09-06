@@ -30,14 +30,21 @@
     {% for day in days %}
     <tr>
         <td><p>{{day.timestamp}}</p></td>
-        <td><p>{%for activity in activitiess%}
-        {{activity.name}}
+        <td><p>{%for activity in day.activities%}
+            <div>{{activity.name}} {{activity.planned_progress}} {{activity.prehours}}:{{activity.preminutes_str}}</div>
         {%endfor%}</p></td>
-        <td><p>1</p></td>
-        <td><p>3:21</p></td>
-        <td><p>Не надо</p></td>
-        <td><p>На линуксе играть можно, но только фиксированное кол-во времени,
-например по выходным,</p></td>
+        <td><p>{%for activity in day.activities%}
+       <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}</div>
+            {%endfor%} </p></td>
+        <td><p>
+            <div>4:52</div>
+            <div>Всего:41:52</div>
+            <div>{{day.overall}}</div>
+            </p></td>
+        <td><p>{{day.conclusion}}</p></td>
+        <td><p>{%for comment in day.comments%}
+        <div>{{comment.comment_author.username}}:{{comment.body}}</div>
+            {%endfor%}</p></td>
     </tr>
     {% endfor %}
     </thead>

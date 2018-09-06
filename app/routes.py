@@ -172,12 +172,34 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
-def taking_activities(day):
-    return Activity.query.filter(Activity.day_id == day.id)
+
 
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
+    dayz = Day.query.all()
+    for day in dayz:
+        _date = day.timestamp
+        month = str(_date.month)
+        day_ = str(_date.day)
+        _date.strptime(month + "-" + day_, "%m-%d")
+        db.session.add(day)
+        db.session.commit()
+
     days = Day.query.all()
-    activitiess = taking_activities(Day.query.get(1))
-    return render_template('activity_manager.html', days = days, activitiess = activitiess)
+
+    return render_template('activity_manager.html', days = days)
+
+
+def date_format(date_):
+    month = str(date_.month)
+    day_ = str(date_.day)
+    date_.strptime(month+"-"+day_, "%m-%d")
+    return date_
+
+
+
+
+
+
+

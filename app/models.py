@@ -32,6 +32,7 @@ class Day(db.Model):
     conclusion = db.Column(db.String(140))
     activities = db.relationship('Activity', backref='date', lazy='dynamic')
     comments =  db.relationship('Comment', backref='comment_date', lazy='dynamic')
+    task = db.Column(db.String(140))
 
     def __repr__(self):
         return '<Day {}>'.format(self.timestamp)
@@ -42,8 +43,13 @@ class Activity(db.Model):
     name = db.Column(db.String(140))
     hours = db.Column(db.Integer)
     minutes = db.Column(db.Integer)
+    prehours = db.Column(db.Integer)
+    preminutes = db.Column(db.Integer)
+    preminutes_str = db.Column(db.String(140))
     completion = db.column(db.Boolean)
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'))
+    planned_progress = db.Column(db.String(50))
+    made_progress = db.Column(db.String(50))
 
 
 

@@ -56,3 +56,13 @@ class Todo(db.Model):
 
     def __repr__(self):
         return '<Activity {}>'.format(self.body)
+
+    if len(str(month)) > 1:
+        month_str = str(month)
+        month_str = '0' + month_str
+        month = (month_str)
+
+    if len(str(day_)) > 1:
+        month_str = str(month)
+        month_str = '0' + month_str
+        day_ = (month_str)
