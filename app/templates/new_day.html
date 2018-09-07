@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>New day creation form</h2>
+
+ <form action="" method="post" id="textform" >
+        <div class="text_input">
+            {{ form.day.label }}{{ form.day }}
+            {{ form.month.label }}{{ form.month }}<br><br>
+            {{ form.task.label }}<br>{{ form.task }}
+            </div>
+<br>
+            <div class="input submit">
+                <input type="submit" value="Proceed to the activities" />
+            </div>
+
+        </form>
+{%for day in days%}
+<p>{{day.timestamp}}</p>
+{%endfor%}
+{% endblock %}

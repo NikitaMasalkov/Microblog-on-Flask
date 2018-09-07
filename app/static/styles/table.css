@@ -13,3 +13,14 @@ table, th, td {border: 1px solid #8c6b48; text-align: center;}
 
 .spectacular {color: gold;}
 
+.thicker {
+width: 375px;
+height: 100px;
+}
+
+.padding {
+
+padding: 16px;
+
+}
+

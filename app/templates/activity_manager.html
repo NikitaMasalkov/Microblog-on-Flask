@@ -22,16 +22,16 @@
         <th><h2>Дата</h2></th>
         <th><h2>Планировалось на день</h2></th>
         <th><h2>Было сделано</h2></th>
-        <th><h2>Итог дня. Замечания.</h2></th>
+        <th><h2>Итог дня. Замечания</h2></th>
         <th><h2>Вывод</h2></th>
         <th><h2>Комментарии</h2></th>
     </tr>
     </tr>
     {% for day in days %}
     <tr>
-        <td><p>{{day.timestamp}}</p></td>
+        <td><p>{{day.timestamp.day}} of {{day.month_str}}</p></td>
         <td><p>{%for activity in day.activities%}
-            <div>{{activity.name}} {{activity.planned_progress}} {{activity.prehours}}:{{activity.preminutes_str}}</div>
+            <div>{{activity.name}}{{activity.planned_progress}} {{activity.prehours}}hrs{{activity.preminutes}}ms</div>
         {%endfor%}</p></td>
         <td><p>{%for activity in day.activities%}
        <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}</div>
@@ -49,5 +49,6 @@
     {% endfor %}
     </thead>
 </table>
+      <a href="{{ url_for('new_day') }}">Create new day</a>
 </body>
 </html>

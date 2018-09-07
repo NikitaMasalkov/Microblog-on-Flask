@@ -8,7 +8,7 @@ from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm
+from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm, DayCreationForm
 from datetime import datetime
 from datetime import *
 
@@ -77,6 +77,32 @@ def post():
         return redirect(url_for('post'))
 
     return render_template('post.html', title='Post', form = form, posts = posts, comments = comments)
+
+@app.route('/new_day', methods=['GET', 'POST'])
+def new_day():
+    days = Day.query.all()
+    form = DayCreationForm(request.form)
+    if form.validate():
+        a = Day(task = form.task.data)
+        db.session.add(a)
+        db.session.commit()
+        day = Day.query.order_by(Day.id.desc()).first()
+        date_ = day.timestamp
+        new_month = str(form.day.data)
+        new_day = str(form.month.data)
+        date_ = date_.strptime(new_month + "-" + new_day, "%m-%d")
+        day.timestamp = date_
+        day.month_str = date_.strftime('%B')
+        db.session.add(day)
+        db.session.commit()
+
+
+
+
+
+        return redirect(url_for('new_day'))
+    return render_template('new_day.html', form = form, days = days)
+
 
 
 @app.route('/delete', methods=['GET', 'POST'])
@@ -187,8 +213,10 @@ def activity_manager():
         db.session.commit()
 
     days = Day.query.all()
+    posts = Post.query.all()
 
-    return render_template('activity_manager.html', days = days)
+    return render_template('activity_manager.html', days = days, posts = posts)
+
 
 
 def date_format(date_):

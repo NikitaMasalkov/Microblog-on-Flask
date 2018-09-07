@@ -16,6 +16,12 @@ class LoginForm(FlaskForm):
 class ReusableForm(Form):
     post_text = TextAreaField('Post input:', validators=[DataRequired()])
 
+class DayCreationForm(Form):
+    day = IntegerField('Day:',validators=[DataRequired()])
+    month = IntegerField('Month:', validators=[DataRequired()])
+    task = TextAreaField('Task', validators=[Length(min=0, max=140)])
+
+
 
 
 class TimeForm(FlaskForm):
@@ -42,7 +48,10 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
+
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
     submit = SubmitField('Submit')
+
+

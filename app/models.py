@@ -31,8 +31,9 @@ class Day(db.Model):
     overall = db.Column(db.String(140))
     conclusion = db.Column(db.String(140))
     activities = db.relationship('Activity', backref='date', lazy='dynamic')
-    comments =  db.relationship('Comment', backref='comment_date', lazy='dynamic')
+    comments = db.relationship('Comment', backref='comment_date', lazy='dynamic')
     task = db.Column(db.String(140))
+    month_str = db.Column(db.String(140))
 
     def __repr__(self):
         return '<Day {}>'.format(self.timestamp)
@@ -78,7 +79,6 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
