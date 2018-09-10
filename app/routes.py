@@ -96,11 +96,7 @@ def new_day():
         db.session.add(day)
         db.session.commit()
 
-
-
-
-
-        return redirect(url_for('new_day'))
+        return redirect(url_for('activity_manager'))
     return render_template('new_day.html', form = form, days = days)
 
 
@@ -125,6 +121,40 @@ def user(username):
         {'author': user, 'body': 'Test post #2'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
+@app.route('/day_edit/<the_day>',methods=['GET', 'POST'])
+def day_edit(the_day):
+  day = Day.query.get(the_day)
+  form = DayCreationForm(request.form)
+  if form.validate():
+      day.task = form.task.data
+      date_ = day.timestamp
+      new_day = str(form.day.data)
+      new_month = str(form.month.data)
+      date_ = date_.strptime(new_month + "-" + new_day, "%m-%d")
+      day.timestamp = date_
+      day.month_str = date_.strftime('%B')
+      db.session.add(day)
+      db.session.commit()
+      flash('Your changes have been saved.')
+      return redirect(url_for('activity_manager'))
+  elif request.method == 'GET':
+      form.task.data = day.task
+      form.day.data = day.timestamp.day
+      form.month.data = day.timestamp.month
+  return render_template('day_edit.html', title='Edit day',
+                         form=form, day = day)
+
+
+
+@app.route('/day_delete/<the_day>', methods=['GET', 'POST'])
+def day_delete(the_day):
+    day = Day.query.get(the_day)
+    db.session.delete(day)
+    db.session.commit()
+    return render_template('delete_day.html')
+
+
 
 
 @app.route ('/delete_activities')

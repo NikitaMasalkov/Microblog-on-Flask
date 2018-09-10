@@ -24,3 +24,8 @@ padding: 16px;
 
 }
 
+a {
+color: yellow
+}
+
+a:link {color:Red}

@@ -4,22 +4,29 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Le
 from app.models import User
 
 
-
-
-
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+
 class ReusableForm(Form):
     post_text = TextAreaField('Post input:', validators=[DataRequired()])
+
 
 class DayCreationForm(Form):
     day = IntegerField('Day:',validators=[DataRequired()])
     month = IntegerField('Month:', validators=[DataRequired()])
     task = TextAreaField('Task', validators=[Length(min=0, max=140)])
+
+
+class ActivityCreation(Form):
+    name = TextAreaField('Name', validators=[Length(min=0, max=140)])
+    hours = IntegerField('Hours:', validators=[DataRequired()])
+    minutes = IntegerField('Minutes:', validators=[DataRequired()])
+    done = BooleanField('Was it done?')
+    progress = TextAreaField('Progress', validators=[Length(min=0, max=140)])
 
 
 
