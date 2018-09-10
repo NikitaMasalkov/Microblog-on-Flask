@@ -21,7 +21,7 @@ class DayCreationForm(Form):
     task = TextAreaField('Task', validators=[Length(min=0, max=140)])
 
 
-class ActivityCreation(Form):
+class ActivityCreationForm(Form):
     name = TextAreaField('Name', validators=[Length(min=0, max=140)])
     hours = IntegerField('Hours:', validators=[DataRequired()])
     minutes = IntegerField('Minutes:', validators=[DataRequired()])

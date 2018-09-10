@@ -37,7 +37,7 @@
         <td><p>{%for activity in day.activities%}
        <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}</div>
             {%endfor%} </p>
-        <a class = "right" href="{{ url_for('day_edit', the_day = day.id) }}"> Edit/add new </a></td>
+        <a class = "right" href="{{ url_for('index') }}">Edit/add new </a></td>
         <td><p>
             <div>4:52</div>
             <div>Всего:41:52</div>

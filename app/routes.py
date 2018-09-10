@@ -8,7 +8,7 @@ from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm, DayCreationForm
+from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm, DayCreationForm, ActivityCreationForm
 from datetime import datetime
 from datetime import *
 
@@ -62,6 +62,7 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
 
 @app.route('/post', methods=['GET', 'POST'])
 @login_required
@@ -146,6 +147,16 @@ def day_edit(the_day):
                          form=form, day = day)
 
 
+@app.route('/activities_edit/<activity_day>',methods=['GET', 'POST'])
+def edit_activivites(activity_day):
+    day = Day.query.get(activity_day)
+    activities = day.activities
+    form = ActivityCreationForm(request.form)
+    if form.validate():
+        new_activity = Activity(name = form.name.data, prehours = form.hours.data, preminutes = form.minutes.data, completion = form.done.data, planned_progress = form.progress.data)
+        return redirect(url_for('activity_manager'))
+    return render_template('edit_activities.html', activities = activities, day=day, form = form)
+
 
 @app.route('/day_delete/<the_day>', methods=['GET', 'POST'])
 def day_delete(the_day):
@@ -164,6 +175,7 @@ def delete_activities():
         db.session.delete(ac)
     db.session.commit()
     return render_template ('delete_activities.html')
+
 
 @app.route('/calculator', methods=['GET', 'POST'])
 def calculator():

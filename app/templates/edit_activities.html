@@ -2,10 +2,23 @@
 
 {% block content %}
     <h1>Editing {{day.timestamp.day}}of {{day.month_str}}</h1>
-{% for activity in day.activities %}}
+{% for activity in activities %}
+<p>{{activity.name}}</p>
+<hr>
 
-
-
-
-
+{%endfor%}
+<br>
+<h2>Create new activity:</h2>
+<form action="" method="post" id="textform" >
+        <div class="text_input">
+            {{ form.name.label }}{{ form.name }}
+            {{ form.hours.label }}{{ form.hours }}<br><br>
+            {{ form.minutes.label }}<br>{{ form.minutes }}
+            {{ form.progress.label }}<br>{{ form.progress }}
+            </div>
+    <p>{{ form.done() }} {{ form.done.label }}</p>
+<br>
+            <div class="input submit">
+                <input type="submit" value="Create an activity" />
+            </div>
 {% endblock %}
