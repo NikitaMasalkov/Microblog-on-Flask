@@ -32,11 +32,13 @@
         <td><p>{{day.timestamp.day}} of {{day.month_str}} <br> {{day.task}}<br>
         <a class = "right" href="{{ url_for('day_edit', the_day = day.id) }}">Edit day</a></p></td>
         <td><p>{%for activity in day.activities%}
-            <div>{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}hrs{{activity.preminutes}}ms
-        <br> <br>
+            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}hrs{{activity.preminutes}}ms </a>
+        <br>
         {%endfor%}</p> <a class = "right" href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td></div></td>
         <td><p>{%for activity in day.activities%}
-       <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}</div>
+       <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}
+            <a class = "right" href="{{url_for('approve_activity', the_activity = activity.id) }}">✓</a><br>
+        </div>
             {%endfor%} </p>
 
         <td><p>

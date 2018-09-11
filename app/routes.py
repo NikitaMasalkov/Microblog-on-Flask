@@ -163,6 +163,27 @@ def edit_activities(activity_day):
     return render_template('edit_activities.html', activities = activities, day=day, form = form)
 
 
+@app.route('/approve_activity/<the_activity>',methods=['GET', 'POST'])
+def approve_activity(the_activity):
+    activity = Activity.query.get(the_activity)
+    form = ActivityCreationForm(request.form)
+    if request.method == "POST":
+        return redirect(url_for('activity_manager'))
+        activity.made_progress = form.progress.data
+        activity.minutes = form.minutes.data
+        activity.hours = form.hours.data
+        activity.completion = form.done.data
+        db.session.add(activity)
+        db.session.commit()
+
+
+    elif request.method == 'GET':
+      form.progress.data = activity.made_progress
+      form.minutes.data = activity.minutes
+      form.hours.data = activity.hours
+    return render_template('approve_activity.html', title='Edit day', form = form, activity = activity)
+
+
 @app.route('/edit_activity/<the_activity>',methods=['GET', 'POST'])
 def edit_activity(the_activity):
     activity = Activity.query.get(the_activity)
@@ -176,6 +197,7 @@ def edit_activity(the_activity):
         db.session.add(activity)
         db.session.commit()
         return redirect(url_for('edit_activities', activity_day = refresher))
+
 
     elif request.method == 'GET':
         form.name.data = activity.name
