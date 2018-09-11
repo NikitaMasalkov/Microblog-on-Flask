@@ -123,6 +123,7 @@ def user(username):
     ]
     return render_template('user.html', user=user, posts=posts)
 
+
 @app.route('/day_edit/<the_day>',methods=['GET', 'POST'])
 def day_edit(the_day):
   day = Day.query.get(the_day)
@@ -147,15 +148,42 @@ def day_edit(the_day):
                          form=form, day = day)
 
 
-@app.route('/activities_edit/<activity_day>',methods=['GET', 'POST'])
-def edit_activivites(activity_day):
+@app.route('/edit_activities/<activity_day>',methods=['GET', 'POST'])
+def edit_activities(activity_day):
     day = Day.query.get(activity_day)
     activities = day.activities
     form = ActivityCreationForm(request.form)
     if form.validate():
-        new_activity = Activity(name = form.name.data, prehours = form.hours.data, preminutes = form.minutes.data, completion = form.done.data, planned_progress = form.progress.data)
+        new_activity = Activity(name = form.name.data, prehours = form.hours.data, preminutes = form.minutes.data,
+                                completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
+                                made_progress = " ", hours = 0, minutes = 0)
+        db.session.add(new_activity)
+        db.session.commit()
         return redirect(url_for('activity_manager'))
     return render_template('edit_activities.html', activities = activities, day=day, form = form)
+
+
+@app.route('/edit_activity/<the_activity>',methods=['GET', 'POST'])
+def edit_activity(the_activity):
+    activity = Activity.query.get(the_activity)
+    form = ActivityCreationForm(request.form)
+    refresher = activity.day_id
+    if form.validate():
+        activity.name = form.name.data
+        activity.prehours = form.hours.data
+        activity.preminutes = form.minutes.data
+        activity.planned_progress = form.progress.data
+        db.session.add(activity)
+        db.session.commit()
+        return redirect(url_for('edit_activities', activity_day = refresher))
+
+    elif request.method == 'GET':
+        form.name.data = activity.name
+        form.minutes.data =  activity.preminutes
+        form.hours.data = activity.prehours
+        form.progress.data = activity.planned_progress
+
+    return render_template('edit_activity.html', form = form, activity = activity)
 
 
 @app.route('/day_delete/<the_day>', methods=['GET', 'POST'])
@@ -164,6 +192,14 @@ def day_delete(the_day):
     db.session.delete(day)
     db.session.commit()
     return render_template('delete_day.html')
+
+@app.route('/activity_delete/<the_activity>', methods=['GET', 'POST'])
+def activity_delete(the_activity):
+    activity = Activity.query.get(the_activity)
+    quiter = activity.day_id
+    db.session.delete(activity)
+    db.session.commit()
+    return render_template('delete_activity.html', quiter = quiter)
 
 
 

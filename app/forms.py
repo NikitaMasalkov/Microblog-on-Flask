@@ -22,7 +22,7 @@ class DayCreationForm(Form):
 
 
 class ActivityCreationForm(Form):
-    name = TextAreaField('Name', validators=[Length(min=0, max=140)])
+    name = TextAreaField('Name', validators=[Length(min=0, max=140), DataRequired()])
     hours = IntegerField('Hours:', validators=[DataRequired()])
     minutes = IntegerField('Minutes:', validators=[DataRequired()])
     done = BooleanField('Was it done?')

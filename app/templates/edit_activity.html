@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Editing {{activity.name}}</h1>
+<br>
+<h2>Edit activity:</h2>
+<form action="" method="post" id="textform" >
+        <div class="text_input">
+            {{ form.name.label }}{{ form.name }}
+            {{ form.hours.label }}{{ form.hours }}<br><br>
+            {{ form.minutes.label }}<br>{{ form.minutes }}
+            {{ form.progress.label }}<br>{{ form.progress }}
+            </div>
+
+<br>
+            <div class="input submit">
+                <input type="submit" value="Edit activity" />
+            </div>
+{% endblock %}
