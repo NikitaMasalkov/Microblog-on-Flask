@@ -168,13 +168,13 @@ def approve_activity(the_activity):
     activity = Activity.query.get(the_activity)
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
-        return redirect(url_for('activity_manager'))
         activity.made_progress = form.progress.data
         activity.minutes = form.minutes.data
         activity.hours = form.hours.data
         activity.completion = form.done.data
         db.session.add(activity)
         db.session.commit()
+        return redirect(url_for('activity_manager'))
 
 
     elif request.method == 'GET':
@@ -316,7 +316,6 @@ def activity_manager():
     posts = Post.query.all()
 
     return render_template('activity_manager.html', days = days, posts = posts)
-
 
 
 def date_format(date_):

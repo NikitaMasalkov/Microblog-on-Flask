@@ -29,8 +29,6 @@ class ActivityCreationForm(Form):
     progress = TextAreaField('Progress', validators=[Length(min=0, max=140)])
 
 
-
-
 class TimeForm(FlaskForm):
     hoursf = IntegerField('Hours', validators=[DataRequired()])
     minutesf = IntegerField('Minutes', validators=[DataRequired()])

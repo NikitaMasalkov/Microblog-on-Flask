@@ -29,3 +29,7 @@ color: yellow
 }
 
 a:link {color:Red}
+
+.activity_link {text-decoration: none;
+color: yellow
+}

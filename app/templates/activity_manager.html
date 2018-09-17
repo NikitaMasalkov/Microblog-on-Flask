@@ -8,7 +8,6 @@
     <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/table.css')}}">
  </head>
      <body>
-    <h1>Hey</h1>
     <h1><a href="{{ url_for('index') }}">Back</a></h1>
 
 <table>
@@ -32,7 +31,7 @@
         <td><p>{{day.timestamp.day}} of {{day.month_str}} <br> {{day.task}}<br>
         <a class = "right" href="{{ url_for('day_edit', the_day = day.id) }}">Edit day</a></p></td>
         <td><p>{%for activity in day.activities%}
-            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}hrs{{activity.preminutes}}ms </a>
+            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}" class = "activity_link">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}hrs{{activity.preminutes}}ms </a>
         <br>
         {%endfor%}</p> <a class = "right" href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td></div></td>
         <td><p>{%for activity in day.activities%}
