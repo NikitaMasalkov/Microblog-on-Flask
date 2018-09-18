@@ -4,6 +4,7 @@
     <h1>Editing {{activity.name}}</h1>
 <br>
 <h2>Edit activity:</h2>
+<a href = "{{url_for('activity_delete' , the_activity = activity.id)}}">Delete activity</a>
 <form action="" method="post" id="textform" >
         <div class="text_input">
             {{ form.name.label }}{{ form.name }}

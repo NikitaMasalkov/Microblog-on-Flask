@@ -34,6 +34,8 @@ class Day(db.Model):
     comments = db.relationship('Comment', backref='comment_date', lazy='dynamic')
     task = db.Column(db.String(140))
     month_str = db.Column(db.String(140))
+    total_minutes = db.Column(db.Integer)
+    total_hours = db.Column(db.Integer)
 
     def __repr__(self):
         return '<Day {}>'.format(self.timestamp)

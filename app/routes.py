@@ -11,6 +11,7 @@ from app import db
 from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm, DayCreationForm, ActivityCreationForm
 from datetime import datetime
 from datetime import *
+from app.time_calculations import total_time_spend, overall_time
 
 
 @app.before_request
@@ -83,6 +84,7 @@ def post():
 def new_day():
     days = Day.query.all()
     form = DayCreationForm(request.form)
+
     if form.validate():
         a = Day(task = form.task.data)
         db.session.add(a)
@@ -176,11 +178,12 @@ def approve_activity(the_activity):
         db.session.commit()
         return redirect(url_for('activity_manager'))
 
-
     elif request.method == 'GET':
-      form.progress.data = activity.made_progress
-      form.minutes.data = activity.minutes
-      form.hours.data = activity.hours
+
+      if activity.made_progress != " ":
+        form.progress.data = activity.made_progress
+    form.minutes.data = activity.minutes
+    form.hours.data = activity.hours
     return render_template('approve_activity.html', title='Edit day', form = form, activity = activity)
 
 
@@ -303,8 +306,13 @@ def edit_profile():
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
-    dayz = Day.query.all()
-    for day in dayz:
+    days = Day.query.all()
+
+    for day in days:
+        day = total_time_spend(day)
+        db.session.add(day)
+        db.session.commit()
+    for day in days:
         _date = day.timestamp
         month = str(_date.month)
         day_ = str(_date.day)
@@ -312,10 +320,15 @@ def activity_manager():
         db.session.add(day)
         db.session.commit()
 
+    total_time = Time.query.get(1)
+    total_time = overall_time(days, total_time)
+    db.session.add(total_time)
+    db.session.commit()
     days = Day.query.all()
     posts = Post.query.all()
+    total_time = Time.query.get(1)
 
-    return render_template('activity_manager.html', days = days, posts = posts)
+    return render_template('activity_manager.html', days = days, posts = posts, total_time = total_time)
 
 
 def date_format(date_):
