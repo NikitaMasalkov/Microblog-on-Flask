@@ -28,32 +28,41 @@
     </tr>
     {% for day in days %}
     <tr>
-        <td><p>{{day.timestamp.day}} of {{day.month_str}} <br> {{day.task}}<br>
+        <td><p>{{day.timestamp.day}} of {{day.month_str}} <br><br> {{day.task}}<br>
         <a class = "right" href="{{ url_for('day_edit', the_day = day.id) }}">Edit day</a></p></td>
         <td><p>{%for activity in day.activities%}
-            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}" class = "activity_link">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}} hrs {{activity.preminutes}} m </a>
+            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}" class = "activity_link">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}:{{activity.preminutes}}</a>
         <br>
-        {%endfor%}</p> <a class = "right" href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td></div></td>
+        {%endfor%}</p> <a href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td></div></td>
         <td><p>{%for activity in day.activities%}
-       <div>{{activity.name}} {{activity.made_progress}} {{activity.hours}}:{{activity.minutes}}
+       <div>{{activity.name}} ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}
             <a class = "right" href="{{url_for('approve_activity', the_activity = activity.id) }}">✓</a><br>
         </div>
             {%endfor%} </p>
 
         <td><p>
-            <div>Всего за день: {{day.total_hours}} hrs {{day.total_minutes}} m</div>
-        <br>
-            <div>{{day.overall}}</div>
+            <div>Всего за день: {{day.total_hours}}:{{day.total_minutes}}</div><br>
+        <div>{{day.overall}}</div>
+         <br>
+        <div><a href="{{url_for('edit_overall', activity_day = day.id) }}">Edit/add summary </a></div>
+
+
             </p></td>
-        <td><p>{{day.conclusion}}</p></td>
+        <td><p>{{day.conclusion}}</p>
+             <br>
+        <div><a href="{{url_for('edit_conclusion', activity_day = day.id) }}">Edit/add conclusion </a></div>
+        <br>
+          </td>
         <td><p>{%for comment in day.comments%}
-        <div>{{comment.comment_author.username}}:{{comment.body}}</div>
-            {%endfor%}</p></td>
+        <div>{{comment.comment_author.username}}: {{comment.body}}</div>
+            <br>
+            {%endfor%}</p>
+         <div><a href="{{url_for('comments', activity_day = day.id) }}">Commentary section </a></div></td>
     </tr>
     {% endfor %}
     </thead>
 </table>
      <br> <a href="{{ url_for('new_day') }}">Create new day</a>
-     <h2>Total: {{total_time.hours}} hr {{total_time.minutes}} m</h2>
+     <h2>Всего: {{total_time.hours}}:{{total_time.minutes}}</h2>
 </body>
 </html>

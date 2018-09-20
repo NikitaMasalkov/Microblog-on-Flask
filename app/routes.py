@@ -158,11 +158,52 @@ def edit_activities(activity_day):
     if form.validate():
         new_activity = Activity(name = form.name.data, prehours = form.hours.data, preminutes = form.minutes.data,
                                 completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
-                                made_progress = " ", hours = 0, minutes = 0)
+                                made_progress = "", hours = 0, minutes = 0)
         db.session.add(new_activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))
     return render_template('edit_activities.html', activities = activities, day=day, form = form)
+
+
+@app.route('/edit_overall/<activity_day>',methods=['GET', 'POST'])
+def edit_overall(activity_day):
+    day = Day.query.get(activity_day)
+    form = ReusableForm(request.form)
+    if form.validate():
+        day.overall = form.post_text.data
+        db.session.add(day)
+        db.session.commit()
+        return redirect(url_for('activity_manager'))
+    if request.method == "GET":
+        form.post_text.data = day.overall
+    return render_template('edit_overall.html', day=day, form = form)
+
+
+@app.route('/edit_conclusion/<activity_day>',methods=['GET', 'POST'])
+def edit_conclusion(activity_day):
+    day = Day.query.get(activity_day)
+    form = ReusableForm(request.form)
+    if form.validate():
+        day.conclusion = form.post_text.data
+        db.session.add(day)
+        db.session.commit()
+        return redirect(url_for('activity_manager'))
+    if request.method == "GET":
+        form.post_text.data = day.conclusion
+    return render_template('edit_conclusion.html', day=day, form = form)
+
+@app.route('/comments/<activity_day>',methods=['GET', 'POST'])
+@login_required
+def comments(activity_day):
+    day = Day.query.get(activity_day)
+    form = ReusableForm(request.form)
+    if form.validate():
+        new_comment = Comment(body = form.post_text.data, user_id = current_user.id, day = day.id)
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('activity_manager'))
+
+    return render_template('comments.html', day=day, form = form)
 
 
 @app.route('/approve_activity/<the_activity>',methods=['GET', 'POST'])
@@ -178,10 +219,15 @@ def approve_activity(the_activity):
         db.session.commit()
         return redirect(url_for('activity_manager'))
 
+
+
     elif request.method == 'GET':
 
-      if activity.made_progress != " ":
-        form.progress.data = activity.made_progress
+      if activity.made_progress == "" and activity.planned_progress != "":
+        form.progress.data = activity.planned_progress
+      elif activity.made_progress != "":
+          form.progress.data = activity.made_progress
+
     form.minutes.data = activity.minutes
     form.hours.data = activity.hours
     return render_template('approve_activity.html', title='Edit day', form = form, activity = activity)
@@ -303,10 +349,19 @@ def edit_profile():
 
 
 
-
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
     days = Day.query.all()
+    for day in days:
+        if day.overall == None:
+            day.overall = ""
+            db.session.add(day)
+            db.session.commit()
+
+        if day.conclusion == None:
+            day.conclusion = ""
+            db.session.add(day)
+            db.session.commit()
 
     for day in days:
         day = total_time_spend(day)

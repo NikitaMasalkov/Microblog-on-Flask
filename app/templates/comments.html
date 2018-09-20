@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Comments:</h1>
+
+<p>{%for comment in day.comments%}
+        <div>{{comment.comment_author.username}}: {{comment.body}}</div>
+<br>
+            {%endfor%}</p>
+<br>
+
+  <form action="" method="post" id="textform" >
+        <div class="input text">
+                <h2>New comment:</h2>
+            <br>
+            {{ form.post_text (cols="35", rows="20") }}
+            </div>
+
+            <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
+
+        </form>
+
+
+{% endblock %}

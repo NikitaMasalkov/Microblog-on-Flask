@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 
 
 class ReusableForm(Form):
-    post_text = TextAreaField('Post input:', validators=[DataRequired()])
+    post_text = TextAreaField('Text input:', validators=[DataRequired()])
 
 
 class DayCreationForm(Form):

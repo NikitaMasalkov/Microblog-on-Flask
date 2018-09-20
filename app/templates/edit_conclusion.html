@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Summary edit form</h2>
+
+  <form action="" method="post" id="textform" >
+        <div class="input text">
+                {{ form.post_text.label }}
+            <br>
+            {{ form.post_text (cols="35", rows="20") }}
+            </div>
+
+            <div class="input submit">
+                <input type="submit" value="Submit" />
+            </div>
+
+        </form>
+
+
+{% endblock %}
