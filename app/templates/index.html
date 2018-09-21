@@ -3,8 +3,8 @@
 {% block content %}
     <h1>Hello, {{ current_user.username }}!</h1>
 <ul>
-    <li><a href="{{ url_for('post') }}">Post</a></li>
-    <li><a href="{{ url_for('calculator') }}"> Ultra Calculator </a></li>
     <li><a href="{{ url_for('activity_manager') }}"> Mega activity manager </a></li>
+    <li><a href="{{ url_for('calculator') }}"> Ultra Calculator </a></li>
+
 </ul>
 {% endblock %}
