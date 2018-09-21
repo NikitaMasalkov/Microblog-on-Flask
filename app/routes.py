@@ -81,7 +81,10 @@ def post():
     return render_template('post.html', title='Post', form = form, posts = posts, comments = comments)
 
 @app.route('/new_day', methods=['GET', 'POST'])
+@login_required
 def new_day():
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     days = Day.query.all()
     form = DayCreationForm(request.form)
 
@@ -103,10 +106,16 @@ def new_day():
     return render_template('new_day.html', form = form, days = days)
 
 
+@app.route('/now_allowed', methods=['GET', 'POST'])
+def not_allowed():
+    return render_template('not_allowed.html')
+
 
 @app.route('/delete', methods=['GET', 'POST'])
+@login_required
 def delete():
-
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     posts = Post.query.all()
     for po in posts:
       db.session.delete(po)
@@ -127,7 +136,10 @@ def user(username):
 
 
 @app.route('/day_edit/<the_day>',methods=['GET', 'POST'])
+@login_required
 def day_edit(the_day):
+  if current_user.id != 1:
+      return redirect(url_for('not_allowed'))
   day = Day.query.get(the_day)
   form = DayCreationForm(request.form)
   if form.validate():
@@ -151,14 +163,18 @@ def day_edit(the_day):
 
 
 @app.route('/edit_activities/<activity_day>',methods=['GET', 'POST'])
+@login_required
 def edit_activities(activity_day):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     day = Day.query.get(activity_day)
     activities = day.activities
     form = ActivityCreationForm(request.form)
     if form.validate():
-        new_activity = Activity(name = form.name.data, prehours = form.hours.data, preminutes = form.minutes.data,
+        new_activity = Activity(name = form.name.data, prehours = form.hours.data,  preminutes = form.minutes.data,
                                 completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
                                 made_progress = "", hours = 0, minutes = 0)
+
         db.session.add(new_activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))
@@ -166,7 +182,10 @@ def edit_activities(activity_day):
 
 
 @app.route('/edit_overall/<activity_day>',methods=['GET', 'POST'])
+@login_required
 def edit_overall(activity_day):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     day = Day.query.get(activity_day)
     form = ReusableForm(request.form)
     if form.validate():
@@ -180,7 +199,10 @@ def edit_overall(activity_day):
 
 
 @app.route('/edit_conclusion/<activity_day>',methods=['GET', 'POST'])
+@login_required
 def edit_conclusion(activity_day):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     day = Day.query.get(activity_day)
     form = ReusableForm(request.form)
     if form.validate():
@@ -191,6 +213,7 @@ def edit_conclusion(activity_day):
     if request.method == "GET":
         form.post_text.data = day.conclusion
     return render_template('edit_conclusion.html', day=day, form = form)
+
 
 @app.route('/comments/<activity_day>',methods=['GET', 'POST'])
 @login_required
@@ -207,7 +230,10 @@ def comments(activity_day):
 
 
 @app.route('/approve_activity/<the_activity>',methods=['GET', 'POST'])
+@login_required
 def approve_activity(the_activity):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     activity = Activity.query.get(the_activity)
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
@@ -234,7 +260,11 @@ def approve_activity(the_activity):
 
 
 @app.route('/edit_activity/<the_activity>',methods=['GET', 'POST'])
+@login_required
 def edit_activity(the_activity):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
+
     activity = Activity.query.get(the_activity)
     form = ActivityCreationForm(request.form)
     refresher = activity.day_id
@@ -258,7 +288,10 @@ def edit_activity(the_activity):
 
 
 @app.route('/day_delete/<the_day>', methods=['GET', 'POST'])
+@login_required
 def day_delete(the_day):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     day = Day.query.get(the_day)
     db.session.delete(day)
     db.session.commit()
@@ -266,6 +299,8 @@ def day_delete(the_day):
 
 @app.route('/activity_delete/<the_activity>', methods=['GET', 'POST'])
 def activity_delete(the_activity):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     activity = Activity.query.get(the_activity)
     quiter = activity.day_id
     db.session.delete(activity)
@@ -276,7 +311,10 @@ def activity_delete(the_activity):
 
 
 @app.route ('/delete_activities')
+@login_required
 def delete_activities():
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
     activities = Time.query.all()
     for ac in activities:
         db.session.delete(ac)
