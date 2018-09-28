@@ -10,7 +10,18 @@
 
 {%endfor%}
 <br>
+
 <h2>Create new activity:</h2>
+
+<div class="dropdown">
+  <button class="dropbtn">Recent</button>
+  <div class="dropdown-content">
+    {% for recent_activity in recent_activities %}
+      <p>{{recent_activity.name}}</p>
+      {% endfor %}
+  </div>
+    <br><br>
+</div>
 <form action="" method="post" id="textform" >
         <div class="text_input">
             {{ form.name.label }}{{ form.name }}

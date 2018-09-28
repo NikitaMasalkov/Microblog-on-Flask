@@ -12,7 +12,7 @@ from app.forms import RegistrationForm, ReusableForm, EditProfileForm, TimeForm,
 from datetime import datetime
 from datetime import *
 from app.time_calculations import total_time_spend, overall_time
-
+from sqlalchemy import desc
 
 @app.before_request
 def before_request():
@@ -167,6 +167,7 @@ def day_edit(the_day):
 def edit_activities(activity_day):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
+    recent_activities = Activity.query.order_by(desc('id')).limit(6)
     day = Day.query.get(activity_day)
     activities = day.activities
     form = ActivityCreationForm(request.form)
@@ -178,7 +179,7 @@ def edit_activities(activity_day):
         db.session.add(new_activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))
-    return render_template('edit_activities.html', activities = activities, day=day, form = form)
+    return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities)
 
 
 @app.route('/edit_overall/<activity_day>',methods=['GET', 'POST'])
