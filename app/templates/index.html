@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello, {{ current_user.username }}!</h1>
-<ul>
-    <li><a href="{{ url_for('activity_manager') }}"> Mega activity manager </a></li>
-    <li><a href="{{ url_for('calculator') }}"> Ultra Calculator </a></li>
-
-</ul>
+<div class="home__container">
+    <h1 class="home__title">Hello, {{ current_user.username }}!</h1>
+    <div class="home__content">
+        <a class="btn home__btn" href="{{ url_for('activity_manager') }}"> Mega activity manager </a>
+        <a class="btn home__btn" href="{{ url_for('calculator') }}"> Ultra Calculator </a>
+    </div>
+</div>
 {% endblock %}

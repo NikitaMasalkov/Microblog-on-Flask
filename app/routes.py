@@ -94,7 +94,7 @@ def new_day():
         db.session.commit()
         day = Day.query.order_by(Day.id.desc()).first()
         date_ = day.timestamp
-        new_month = str(form.day.data)
+        new_month = str(form.month.data)
         new_day = str(form.month.data)
         date_ = date_.strptime(new_month + "-" + new_day, "%m-%d")
         day.timestamp = date_

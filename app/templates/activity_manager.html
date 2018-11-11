@@ -62,7 +62,7 @@
     {% endfor %}
     </thead>
 </table>
-     <br> <a href="{{ url_for('new_day') }}">Create new day</a>
+     <a class="btn" href="{{ url_for('new_day') }}">Create new day</a>
      <h2>Всего: {{total_time.hours}}:{{total_time.minutes}}</h2>
 </body>
 </html>

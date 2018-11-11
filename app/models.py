@@ -56,6 +56,7 @@ class Activity(db.Model):
 
 
 
+
     def __repr__(self):
         return '<Activity {}>'.format(self.name)
 
