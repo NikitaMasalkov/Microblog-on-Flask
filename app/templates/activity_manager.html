@@ -1,68 +1,77 @@
 <html>
 <head>
-        {% if title %}
-        <title>{{ title }} - microblog</title>
-        {% else %}
-        <title>microblog</title>
-        {% endif %}
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/table.css')}}">
- </head>
-     <body>
-    <h1><a href="{{ url_for('index') }}">Back</a></h1>
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>microblog</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/table.css')}}">
+</head>
+<body>
 
-<table>
+<a class="back__btn" href="{{ url_for('index') }}">
+    <img src="static/images/back.png">
+</a>
+
+<div class="activity__content">
+<div colspan="6">
+    <h1 class="title">Spectacular activity table</h1>
+</div>
+<table class="table">
     <thead>
-    <tr>
-        <th colspan="6">
-            <h1 class="spectacular">Spectacular activity table</h1>
-        </th>
-    </tr>
-    <tr class="borders">
-        <th><h2>Дата. Задание на день</h2></th>
-        <th><h2>Запланированные таски</h2></th>
-        <th><h2>Было сделано</h2></th>
-        <th><h2>Итог дня. Замечания</h2></th>
-        <th><h2>Вывод</h2></th>
-        <th><h2>Комментарии</h2></th>
-    </tr>
-    </tr>
+         <tr>
+            <td><h2>Дата. Задание на день</h2></td>
+            <td><h2>Запланированные таски</h2></td>
+            <td><h2>Было сделано</h2></td>
+            <td><h2>Итог дня. Замечания</h2></td>
+            <td><h2>Вывод</h2></td>
+            <td><h2>Комментарии</h2></td>
+        </tr>
+    </thead>
+    <tbody>
     {% for day in days %}
     <tr>
         <td><p>{{day.timestamp.day}} of {{day.month_str}} <br><br> {{day.task}}<br>
-        <a class = "right" href="{{ url_for('day_edit', the_day = day.id) }}">Edit day</a></p></td>
+            <a class="right" href="{{ url_for('day_edit', the_day = day.id) }}">Edit day</a></p></td>
         <td><p>{%for activity in day.activities%}
-            <div> <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}" class = "activity_link">{{activity.name}} ({{activity.planned_progress}}) {{activity.prehours}}:{{activity.preminutes}}</a>
-        <br>
-        {%endfor%}</p> <a href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td></div></td>
+            <div><a href="{{url_for('edit_activity' , the_activity = activity.id)}}" class="activity_link">{{activity.name}}
+                ({{activity.planned_progress}}) {{activity.prehours}}:{{activity.preminutes}}</a>
+                <br>
+                {%endfor%}
+            </p> <a href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td>
+        </div></td>
         <td><p>{%for activity in day.activities%}
-       <div>{{activity.name}} ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}
-            <a class = "right" href="{{url_for('approve_activity', the_activity = activity.id) }}">✓</a><br>
-        </div>
+            <div>{{activity.name}} ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}
+                <a class="right" href="{{url_for('approve_activity', the_activity = activity.id) }}">✓</a><br>
+            </div>
             {%endfor%} </p>
 
         <td><p>
-            <div>Всего за день: {{day.total_hours}}:{{day.total_minutes}}</div><br>
-        <div>{{day.overall}}</div>
-         <br>
-        <div><a href="{{url_for('edit_overall', activity_day = day.id) }}">Edit/add summary </a></div>
+            <div>Всего за день: {{day.total_hours}}:{{day.total_minutes}}</div>
+            <br>
+            <div>{{day.overall}}</div>
+            <br>
+            <div><a href="{{url_for('edit_overall', activity_day = day.id) }}">Edit/add summary </a></div>
 
 
             </p></td>
         <td><p>{{day.conclusion}}</p>
-             <br>
-        <div><a href="{{url_for('edit_conclusion', activity_day = day.id) }}">Edit/add conclusion </a></div>
-        <br>
-          </td>
+            <br>
+            <div><a href="{{url_for('edit_conclusion', activity_day = day.id) }}">Edit/add conclusion </a></div>
+            <br>
+        </td>
         <td><p>{%for comment in day.comments%}
-        <div>{{comment.comment_author.username}}: {{comment.body}}</div>
+            <div>{{comment.comment_author.username}}: {{comment.body}}</div>
             <br>
             {%endfor%}</p>
-         <div><a href="{{url_for('comments', activity_day = day.id) }}">Commentary section </a></div></td>
+            <div><a href="{{url_for('comments', activity_day = day.id) }}">Commentary section </a></div>
+        </td>
     </tr>
     {% endfor %}
-    </thead>
+    </tbody>
 </table>
-     <a class="btn" href="{{ url_for('new_day') }}">Create new day</a>
-     <h2>Всего: {{total_time.hours}}:{{total_time.minutes}}</h2>
+<a class="btn" href="{{ url_for('new_day') }}">Create new day</a>
+<h2>Всего: {{total_time.hours}}:{{total_time.minutes}}</h2>
+</div>
 </body>
 </html>
