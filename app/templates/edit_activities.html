@@ -17,7 +17,7 @@
   <button class="dropbtn">Recent</button>
   <div class="dropdown-content">
     {% for recent_activity in recent_activities %}
-      <p>{{recent_activity.name}}</p>
+     <div><a href="{{url_for('edit_prepared_activity', activity_day = recent_activity.day, prepared_activity = recent_activity.id) }}"> {{recent_activity.name}}</a></div>
       {% endfor %}
   </div>
     <br><br>

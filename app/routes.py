@@ -20,6 +20,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
+
 @app.route('/')
 @app.route('/index')
 @login_required
@@ -180,6 +181,34 @@ def edit_activities(activity_day):
         db.session.commit()
         return redirect(url_for('activity_manager'))
     return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities)
+
+
+@app.route('/edit_prepared_activity/<activity_day>/<prepared_activity>',methods=['GET', 'POST'])
+@login_required
+def edit_prepared_activity(activity_day, prepared_activity):
+    if current_user.id != 1:
+        return redirect(url_for('not_allowed'))
+    recent_activities = Activity.query.order_by(desc('id')).limit(6)
+    day = Day.query.get(activity_day)
+    prepared_activity = Activity.query.get(prepared_activity.id)
+    activities = day.activities
+    form = ActivityCreationForm(request.form)
+    if request.method == "POST":
+        new_activity = Activity(name = form.name.data, prehours = form.hours.data,  preminutes = form.minutes.data,
+                                completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
+                                made_progress = "", hours = 0, minutes = 0)
+
+        db.session.add(new_activity)
+        db.session.commit()
+        return redirect(url_for('activity_manager'))
+
+    elif request.method == 'GET':
+        form.name.data = prepared_activity.name
+        form.minutes.data = prepared_activity.preminutes
+        form.hours.data = prepared_activity.prehours
+        form.progress.data = prepared_activity.planned_progress
+
+    return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities, prepared_activity = prepared_activity)
 
 
 @app.route('/edit_overall/<activity_day>',methods=['GET', 'POST'])
@@ -386,7 +415,9 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
-
+#@app.route('/checklist', methods=['GET', 'POST'])
+#def activity_manager():
+#    return render_template('checklist.html')
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
