@@ -183,14 +183,14 @@ def edit_activities(activity_day):
     return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities)
 
 
-@app.route('/edit_prepared_activity/<activity_day>/<prepared_activity>',methods=['GET', 'POST'])
+@app.route('/edit_prepared_activity/<activity_day>/<prepared_activity>', methods=['GET', 'POST'])
 @login_required
 def edit_prepared_activity(activity_day, prepared_activity):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
     recent_activities = Activity.query.order_by(desc('id')).limit(6)
     day = Day.query.get(activity_day)
-    prepared_activity = Activity.query.get(prepared_activity.id)
+    prepared_activity = Activity.query.get(prepared_activity)
     activities = day.activities
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
@@ -208,7 +208,7 @@ def edit_prepared_activity(activity_day, prepared_activity):
         form.hours.data = prepared_activity.prehours
         form.progress.data = prepared_activity.planned_progress
 
-    return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities, prepared_activity = prepared_activity)
+    return render_template('prepared_activity.html', activities = activities, day=day, form = form, recent_activities = recent_activities, prepared_activity = prepared_activity)
 
 
 @app.route('/edit_overall/<activity_day>',methods=['GET', 'POST'])
