@@ -256,14 +256,25 @@ textarea {
 }
 .table_content a {
     text-decoration: none !important;
+    border-bottom: none;
 }
 
 .table_smaller_content {
     font-size: 25px;
     text-decoration: none !important;
     color: aliceblue;
+    /*border-radius: 5px;*/
+    /*background-color: rgba(204, 119, 34, 0.8)*/
+}
+
+.table_smaller_content a {
+    border-bottom: none;
 }
 
 a:link {
     text-decoration: none;
+}
+
+.completion_mark {
+    color: greenyellow;
 }

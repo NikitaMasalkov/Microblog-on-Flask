@@ -36,17 +36,17 @@
         <td><p>{%for activity in day.activities%}
             <div class="table_smaller_content"><a href="{{url_for('edit_activity' , the_activity = activity.id)}}" >{{activity.name}}
                 ({{activity.planned_progress}}) {{activity.prehours}}:{{activity.preminutes}}</a>
-                <br>
+                <br> <br>
                 {%endfor%}
                 <br>
             </p> <a href="{{url_for('edit_activities', activity_day = day.id) }}">Edit/add new </a></td>
             </div></td>
-        <td><p>{%for activity in day.activities%}
-            <div> <span>{{activity.completion}}</span> <a class="right" href="{{url_for('approve_activity', the_activity = activity.id) }}">{{activity.name}} ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}<br></a>
+        <td class="table_smaller_content"><p>{%for activity in day.activities%}
+            <div> <span class="completion_mark">{{activity.completion}}</span> <a class="right" href="{{url_for('approve_activity', the_activity = activity.id) }}">{{activity.name}} ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}<br></a>
             </div>
             {%endfor%} </p>
 
-        <td><p>
+        <td class="table_smaller_content"><p>
             <div>Всего за день: {{day.total_hours}}:{{day.total_minutes}}</div>
             <br>
             <div>{{day.overall}}</div>
@@ -55,12 +55,12 @@
 
 
             </p></td>
-        <td><p>{{day.conclusion}}</p>
+        <td class="table_smaller_content"><p>{{day.conclusion}}</p>
             <br>
             <div><a href="{{url_for('edit_conclusion', activity_day = day.id) }}">Edit/add conclusion </a></div>
             <br>
         </td>
-        <td><p>{%for comment in day.comments%}
+        <td class="table_smaller_content"><p>{%for comment in day.comments%}
             <div>{{comment.comment_author.username}}: {{comment.body}}</div>
             <br>
             {%endfor%}</p>
