@@ -96,7 +96,7 @@ def new_day():
         day = Day.query.order_by(Day.id.desc()).first()
         date_ = day.timestamp
         new_month = str(form.month.data)
-        new_day = str(form.month.data)
+        new_day = str(form.day.data)
         date_ = date_.strptime(new_month + "-" + new_day, "%m-%d")
         day.timestamp = date_
         day.month_str = date_.strftime('%B')
@@ -271,6 +271,10 @@ def approve_activity(the_activity):
         activity.minutes = form.minutes.data
         activity.hours = form.hours.data
         activity.completion = form.done.data
+        if activity.completion == 1:
+            activity.completion = '✓'
+        if activity.completion == 0:
+            activity.completion ='❌'
         db.session.add(activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))
@@ -303,6 +307,7 @@ def edit_activity(the_activity):
         activity.prehours = form.hours.data
         activity.preminutes = form.minutes.data
         activity.planned_progress = form.progress.data
+        activity.completion = ""
         db.session.add(activity)
         db.session.commit()
         return redirect(url_for('edit_activities', activity_day = refresher))

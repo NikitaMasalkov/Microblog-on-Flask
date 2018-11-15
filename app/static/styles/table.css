@@ -248,3 +248,22 @@ textarea {
     width: 85px;
     display: inline-block;
 }
+
+.table_content {
+    font-size: 30px;
+    text-decoration: none !important;
+    color: aliceblue;
+}
+.table_content a {
+    text-decoration: none !important;
+}
+
+.table_smaller_content {
+    font-size: 25px;
+    text-decoration: none !important;
+    color: aliceblue;
+}
+
+a:link {
+    text-decoration: none;
+}
