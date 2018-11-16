@@ -206,7 +206,7 @@ def edit_prepared_activity(activity_day, prepared_activity):
         form.name.data = prepared_activity.name
         form.minutes.data = prepared_activity.preminutes
         form.hours.data = prepared_activity.prehours
-        form.progress.data = prepared_activity.planned_progress
+        form.progress.data = prepared_activity.made_progress
 
     return render_template('prepared_activity.html', activities = activities, day=day, form = form, recent_activities = recent_activities, prepared_activity = prepared_activity)
 
