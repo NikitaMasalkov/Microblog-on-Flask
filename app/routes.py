@@ -168,7 +168,7 @@ def day_edit(the_day):
 def edit_activities(activity_day):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
-    recent_activities = Activity.query.order_by(desc('id')).limit(6)
+    recent_activities = Activity.query.order_by(desc('id')).limit(10)
     day = Day.query.get(activity_day)
     activities = day.activities
     form = ActivityCreationForm(request.form)
@@ -188,7 +188,7 @@ def edit_activities(activity_day):
 def edit_prepared_activity(activity_day, prepared_activity):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
-    recent_activities = Activity.query.order_by(desc('id')).limit(6)
+    recent_activities = Activity.query.order_by(desc('id')).limit(10)
     day = Day.query.get(activity_day)
     prepared_activity = Activity.query.get(prepared_activity)
     activities = day.activities
@@ -264,6 +264,7 @@ def comments(activity_day):
 def approve_activity(the_activity):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
+
     activity = Activity.query.get(the_activity)
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
@@ -301,16 +302,14 @@ def edit_activity(the_activity):
 
     activity = Activity.query.get(the_activity)
     form = ActivityCreationForm(request.form)
-    refresher = activity.day_id
-    if form.validate():
+    if request.method == "POST":
         activity.name = form.name.data
         activity.prehours = form.hours.data
         activity.preminutes = form.minutes.data
         activity.planned_progress = form.progress.data
-        activity.completion = ""
         db.session.add(activity)
         db.session.commit()
-        return redirect(url_for('edit_activities', activity_day = refresher))
+        return redirect(url_for('activity_manager'))
 
 
     elif request.method == 'GET':
