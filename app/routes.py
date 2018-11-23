@@ -168,7 +168,7 @@ def day_edit(the_day):
 def edit_activities(activity_day):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
-    recent_activities = Activity.query.order_by(desc('id')).limit(10)
+    recent_activities = Activity.query.order_by(desc('id')).limit(15)
     day = Day.query.get(activity_day)
     activities = day.activities
     form = ActivityCreationForm(request.form)
