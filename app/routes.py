@@ -273,9 +273,9 @@ def approve_activity(the_activity):
         activity.hours = form.hours.data
         activity.completion = form.done.data
         if activity.completion == 1:
-            activity.completion = '✓'
+            activity.completion = '+'
         if activity.completion == 0:
-            activity.completion ='❌'
+            activity.completion ='-'
         db.session.add(activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))

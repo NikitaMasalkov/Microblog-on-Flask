@@ -1,12 +1,10 @@
 from flask import Flask
 from app.config import Config
-from flask_sqlalchemy import SQLAlchemy
+import os
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
-from flask.ext.sqlalchemy import SQLAlchemy
-
-
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
