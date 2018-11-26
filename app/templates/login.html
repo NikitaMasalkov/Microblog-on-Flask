@@ -6,20 +6,24 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            <span class="login_input">{{ form.username(size=32) }}<br></span>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+           <span class="login_input"> {{ form.password(size=32) }} </span> <br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
+        <br>
+        <div class="input submit">
+        <input type="submit" class="btn" value="Sign in"/>
+    </div>
     </form>
+<br>
     <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 {% endblock %}

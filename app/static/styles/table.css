@@ -3,7 +3,7 @@
 body {
     background: url("../images/background.jpeg") rgb(40, 18, 5);
     background-size: cover;
-    font-family: 'Caveat', cursive;
+    font-family: 'Pangolin', cursive;
     font-size: 28px;
     text-shadow: 0 0 50px #000;
 }
@@ -199,7 +199,7 @@ input {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-right: 6px;
-    box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 input:focus, textarea:focus {
@@ -212,12 +212,24 @@ textarea {
     background: url("../images/input-bg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
 .new-day__content {
     margin-bottom: 20px;
+}
+
+.login_input {
+    height: 25px;
+}
+.login_input input {
+    font-family: Pangolin;
+    height: 25px;
+    border-radius: 4px;
+    display: flex;
+    font-size: 15px;
+    padding: 0 10px;
 }
 
 .new-day__content input {
@@ -254,6 +266,7 @@ textarea {
     text-decoration: none !important;
     color: aliceblue;
 }
+
 .table_content a {
     text-decoration: none !important;
     border-bottom: none;

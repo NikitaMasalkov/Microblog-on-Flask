@@ -188,7 +188,7 @@ def edit_activities(activity_day):
 def edit_prepared_activity(activity_day, prepared_activity):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
-    recent_activities = Activity.query.order_by(desc('id')).limit(10)
+    frecent_activities = Activity.query.order_by(desc('id')).limit(10)
     day = Day.query.get(activity_day)
     prepared_activity = Activity.query.get(prepared_activity)
     activities = day.activities
