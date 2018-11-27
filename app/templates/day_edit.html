@@ -4,15 +4,16 @@
 <h2>Day editing form</h2>
 
  <form action="" method="post" id="textform" >
-        <div class="text_input">
-            {{ form.day.label }}{{ form.day }}
-            {{ form.month.label }}{{ form.month }}<br><br>
+        <div class= "text_input new-day__content">
+            <div class="new-day__line">{{ form.day.label }}{{ form.day }}</div>
+           <div class="new-day__line"> {{ form.month.label }}{{ form.month }}</div><br>
             {{ form.task.label }}<br>{{ form.task }}
             </div>
-<br>
+
             <div class="input submit">
-                <input type="submit" value="Proceed to the activities" />
+                <input type="submit" class="btn" value="Proceed to the activities" />
             </div>
+     <br>
         </form>
 <p><a href="{{ url_for('day_delete' , the_day = day.id) }}"> <em>Click to delete day</em></a></p>
 

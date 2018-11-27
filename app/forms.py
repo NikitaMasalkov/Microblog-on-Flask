@@ -22,11 +22,11 @@ class DayCreationForm(Form):
 
 
 class ActivityCreationForm(Form):
-    name = TextAreaField('Name', validators=[Length(min=0, max=140), DataRequired()])
+    name = TextAreaField('Name:', validators=[Length(min=0, max=140), DataRequired()])
     hours = IntegerField('Hours:', validators=[DataRequired()])
     minutes = IntegerField('Minutes:', validators=[DataRequired()])
     done = BooleanField('Was it done?')
-    progress = TextAreaField('Progress', validators=[Length(min=0, max=140)])
+    progress = TextAreaField('Progress:', validators=[Length(min=0, max=140)])
 
 
 class TimeForm(FlaskForm):

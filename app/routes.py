@@ -188,7 +188,7 @@ def edit_activities(activity_day):
 def edit_prepared_activity(activity_day, prepared_activity):
     if current_user.id != 1:
         return redirect(url_for('not_allowed'))
-    frecent_activities = Activity.query.order_by(desc('id')).limit(10)
+    recent_activities = Activity.query.order_by(desc('id')).limit(10)
     day = Day.query.get(activity_day)
     prepared_activity = Activity.query.get(prepared_activity)
     activities = day.activities
@@ -280,8 +280,6 @@ def approve_activity(the_activity):
         db.session.commit()
         return redirect(url_for('activity_manager'))
 
-
-
     elif request.method == 'GET':
 
       if activity.made_progress == "" and activity.planned_progress != "":
@@ -290,6 +288,7 @@ def approve_activity(the_activity):
           form.progress.data = activity.made_progress
 
     form.minutes.data = activity.minutes
+    form.name = activity.name
     form.hours.data = activity.hours
     return render_template('approve_activity.html', title='Edit day', form = form, activity = activity)
 

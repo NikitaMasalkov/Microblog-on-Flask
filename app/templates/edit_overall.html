@@ -4,14 +4,14 @@
 <h2>Summary edit form</h2>
 
   <form action="" method="post" id="textform" >
-        <div class="input text">
-                {{ form.post_text.label }}
-            <br>
-            {{ form.post_text (cols="35", rows="20") }}
+        <div>
+            <div class="new-activity__name">{{ form.post_text.label }}</div>
+
+            <div class="new-activity__summary">{{ form.post_text }}</div>
             </div>
 
             <div class="input submit">
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" class="btn"/>
             </div>
 
         </form>

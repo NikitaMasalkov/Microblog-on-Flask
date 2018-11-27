@@ -6,15 +6,14 @@
 <h2>Edit activity:</h2>
 <a href = "{{url_for('activity_delete' , the_activity = activity.id)}}">Delete activity</a>
 <form action="" method="post" id="textform" >
-        <div class="text_input">
-            {{ form.name.label }}{{ form.name }}
-            {{ form.hours.label }}{{ form.hours }}<br><br>
-            {{ form.minutes.label }}<br>{{ form.minutes }}
-            {{ form.progress.label }}<br>{{ form.progress }}
+        <div class="text_input new-day__content">
+            <div class="new-activity__name">{{ form.name.label }}{{ form.name }}</div>
+             <div class="new-day__line">  {{ form.hours.label }}{{ form.hours }}</div>
+            <div class="new-day__line">  {{ form.minutes.label }}{{ form.minutes }}</div>
+            <div class="new-activity__name">{{ form.progress.label }}{{ form.progress }}</div>
             </div>
-
 <br>
             <div class="input submit">
-                <input type="submit" value="Edit activity" />
+                <input type="submit" class="btn" value="Edit activity" />
             </div>
 {% endblock %}
