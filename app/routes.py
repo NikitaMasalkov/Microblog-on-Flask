@@ -174,7 +174,7 @@ def edit_activities(activity_day):
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
         new_activity = Activity(name = form.name.data, prehours = form.hours.data,  preminutes = form.minutes.data,
-                                completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
+                                completion = 0, planned_progress = form.progress.data, day_id = day.id,
                                 made_progress = "", hours = 0, minutes = 0)
 
         db.session.add(new_activity)
@@ -195,7 +195,7 @@ def edit_prepared_activity(activity_day, prepared_activity):
     form = ActivityCreationForm(request.form)
     if request.method == "POST":
         new_activity = Activity(name = form.name.data, prehours = form.hours.data,  preminutes = form.minutes.data,
-                                completion = form.done.data, planned_progress = form.progress.data, day_id = day.id,
+                                completion = 0, planned_progress = form.progress.data, day_id = day.id,
                                 made_progress = "", hours = 0, minutes = 0)
 
         db.session.add(new_activity)
@@ -272,24 +272,19 @@ def approve_activity(the_activity):
         activity.minutes = form.minutes.data
         activity.hours = form.hours.data
         activity.completion = form.done.data
-        if activity.completion == 1:
-            activity.completion = '+'
-        if activity.completion == 0:
-            activity.completion ='-'
         db.session.add(activity)
         db.session.commit()
         return redirect(url_for('activity_manager'))
 
     elif request.method == 'GET':
+        form.minutes.data = activity.minutes
+        form.name = activity.name
+        form.hours.data = activity.hours
+        if activity.made_progress == "" and activity.planned_progress != "":
+            form.progress.data = activity.planned_progress
+        elif activity.made_progress != "":
+            form.progress.data = activity.made_progress
 
-      if activity.made_progress == "" and activity.planned_progress != "":
-        form.progress.data = activity.planned_progress
-      elif activity.made_progress != "":
-          form.progress.data = activity.made_progress
-
-    form.minutes.data = activity.minutes
-    form.name = activity.name
-    form.hours.data = activity.hours
     return render_template('approve_activity.html', title='Edit day', form = form, activity = activity)
 
 

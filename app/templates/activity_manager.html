@@ -48,9 +48,11 @@
       <span class="completion_mark">
 
       </span>
-    <a class="right"
-                                                                         href="{{url_for('approve_activity', the_activity = activity.id) }}">{{activity.name}}
-        ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}<br></a>
+    <a class="right" href="{{url_for('approve_activity', the_activity = activity.id) }}">
+        {%if activity.completion == "1"%} <span class="completion_mark"> ✓ </span>{%endif%}
+        {%if activity.completion == "0"%} <span class="uncompletion_mark"> ✖ </span>{%endif%}
+        {{activity.name}}
+      ({{activity.made_progress}}) {{activity.hours}}:{{activity.minutes}}<br></a>
     </div>
     {%endfor%} </p>
 

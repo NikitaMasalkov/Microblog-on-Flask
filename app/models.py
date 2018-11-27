@@ -49,7 +49,7 @@ class Activity(db.Model):
     prehours = db.Column(db.Integer)
     preminutes = db.Column(db.Integer)
     preminutes_str = db.Column(db.String(140))
-    completion = db.Column(db.String(140))
+    completion = db.Column(db.Integer)
     day_id = db.Column(db.Integer, db.ForeignKey('day.id'))
     planned_progress = db.Column(db.String(50))
     made_progress = db.Column(db.String(50))

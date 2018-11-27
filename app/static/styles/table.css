@@ -314,3 +314,11 @@ a:link {
     font-family: Pangolin;
     padding-top: 20;
 }
+
+.completion_mark link {
+    color: chartreuse !important;
+}
+
+.uncompletion_mark link {
+    color: crimson !important;
+}
