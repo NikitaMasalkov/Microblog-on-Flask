@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Approving {{activity.name}}</h1>
+<h1>Approving {{activity.name}}</h1>
 <h2>Planned:</h2>
 <br>
-<p>Tracking progress: {{activity.name}} {{activity.planned_progress}} {{activity.prehours}} hrs {{activity.preminutes}} m </p>
+<p>Tracking progress: {{activity.name}} {{activity.planned_progress}} {{activity.prehours}} hrs {{activity.preminutes}}
+    m </p>
 <hr>
 
-<form action="" method="post" id="textform" >
-        <div class="text_input new-day__content">
-            <div class="new-activity__name">{{ form.name.label }}{{ form.name }}</div>
-             <div class="new-day__line">  {{ form.hours.label }}{{ form.hours }}</div>
-            <div class="new-day__line">  {{ form.minutes.label }}{{ form.minutes }}</div>
-            <div class="new-activity__name">{{ form.progress.label }}{{ form.progress }}</div>
-            </div>
+<form action="" method="post" id="textform">
+    <div class="text_input new-day__content">
+        <div class="new-activity__name">{{ form.name.label }}{{ form.name }}</div>
+        <div class="new-day__line"> {{ form.hours.label }}{{ form.hours }}</div>
+        <div class="new-day__line"> {{ form.minutes.label }}{{ form.minutes }}</div>
+        <div class="new-activity__name">{{ form.progress.label }}{{ form.progress }}</div>
+    </div>
     <p>{{ form.done() }} {{ form.done.label }}</p>
-<br>
-            <div class="input submit">
-                <input type="submit" class="btn" value="Approve activity" />
-            </div>
+    <br>
+    <div class="input submit">
+        <input type="submit" class="btn" value="Approve activity"/>
+    </div>
 </form>
 {% endblock %}
