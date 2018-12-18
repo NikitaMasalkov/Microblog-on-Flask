@@ -6,31 +6,32 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            <span class="login_input">  {{ form.username(size=32) }} </span>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
 
             {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
+            <span class="login_input"> {{ form.email}} </span>
             {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+            <span class="login_input"> {{ form.password }}</span>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password_confirmation.label }}<br>
-            {{ form.password_confirmation(size=32) }}<br>
+            <span class="login_input">   {{ form.password_confirmation(size=32) }} </span>
             {% for error in form.password_confirmation.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <br>
+        <p> <input type="submit" class="btn" value="Rjegister"/></p>
     </form>
 {% endblock %}

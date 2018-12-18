@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="home__container">
-    <h1 class="home__title">Hello, heroku {{ current_user.username }}! </h1>
+    <h1 class="home__title">Hello, {{ current_user.username }}! </h1>
     <div class="home__content">
         <a class="btn home__btn" href="{{ url_for('activity_manager') }}"> Mega activity manager </a>
         <!--<a class="btn home__btn" href="{{ url_for('calculator') }}"> Ultra Calculator </a>-->
