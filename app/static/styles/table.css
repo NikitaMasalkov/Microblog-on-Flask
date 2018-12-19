@@ -322,3 +322,15 @@ a:link {
 .uncompletion_mark link {
     color: crimson !important;
 }
+
+.schedule_remainder {
+    position: absolute;
+  left: 40%;
+  top: 55%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: cornsilk;
+    font-size: 20px;
+    color: black;
+    width: 700px;
+}
