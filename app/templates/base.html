@@ -12,7 +12,7 @@
         <header class="header">
             <span class="header__logo">Microblog</span>
             <div class="menu">
-                <a class="menu__item" href="{{ url_for('index') }}">Home</a>
+                <a class="menu__item" href="{{ url_for('landing') }}">Home</a>
 
                 {% if current_user.is_anonymous %}
                 <a class="menu__item" href="{{ url_for('login') }}">Login</a>

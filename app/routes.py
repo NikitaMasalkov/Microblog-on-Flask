@@ -22,16 +22,16 @@ def before_request():
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/landing')
 @login_required
-def index():
+def landing():
     posts = Post.query.all()
     return render_template('index.html', title='Home', posts=posts, )
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('landing'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -41,7 +41,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('landing')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
@@ -49,12 +49,12 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('landing'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('landing'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -179,7 +179,7 @@ def edit_activities(activity_day):
 
         db.session.add(new_activity)
         db.session.commit()
-        return redirect(url_for('activity_manager'))
+        return redirect(url_for('edit_activities', activity_day = activity_day))
     return render_template('edit_activities.html', activities = activities, day=day, form = form, recent_activities = recent_activities)
 
 
@@ -200,7 +200,7 @@ def edit_prepared_activity(activity_day, prepared_activity):
 
         db.session.add(new_activity)
         db.session.commit()
-        return redirect(url_for('activity_manager'))
+        return redirect(url_for('edit_activities', activity_day = activity_day))
 
     elif request.method == 'GET':
         form.name.data = prepared_activity.name
