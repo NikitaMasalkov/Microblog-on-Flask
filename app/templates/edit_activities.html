@@ -3,44 +3,53 @@
 {% block content %}
 <h1>Editing {{day.timestamp.day}} of {{day.month_str}}. Planned activities</h1>
 {% for activity in activities %}
-<p>{{activity.name}}:  {{activity.planned_progress}} {{activity.prehours}} hrs {{activity.preminutes}} m
-    <a href = "{{url_for('edit_activity' , the_activity = activity.id)}}">Edit activity</a></p>
-<a href = "{{url_for('activity_delete' , the_activity = activity.id)}}">Delete activity</a>
+<p>{{activity.name}}: {{activity.planned_progress}} {{activity.prehours}} hrs {{activity.preminutes}} m
+    <a href="{{url_for('edit_activity' , the_activity = activity.id)}}">Edit activity</a></p>
+<a href="{{url_for('activity_delete' , the_activity = activity.id)}}">Delete activity</a>
 <hr>
 {%endfor%}
 <br>
-
-<h2>Create new activity:</h2>
-
-<div class="dropdown">
-  <button class="dropbtn">Recent</button>
-  <div class="dropdown-content">
-    {% for recent_activity in recent_activities %}
-     <div><a href="{{url_for('edit_prepared_activity', activity_day = day.id, prepared_activity = recent_activity.id) }}"> {{recent_activity.name}}</a></div>
-      {% endfor %}
-  </div>
-</div>
-<br><br>
-<form action="" method="post" id="textform" >
-<div class="text_input new-day__content">
-            <div class="new-activity__name">{{ form.name.label }}{{ form.name }}</div>
-             <div class="new-day__line">  {{ form.hours.label }}{{ form.hours }}</div>
-            <div class="new-day__line">  {{ form.minutes.label }}{{ form.minutes }}</div>
-            <div class="new-activity__name">{{ form.progress.label }}{{ form.progress }}</div>
+<div class="activities__line">
+    <div class="activities__left">
+        <h2>Create new activity:</h2>
+        <div class="dropdown">
+            <button class="dropbtn">Recent</button>
+            <div class="dropdown-content">
+                {% for recent_activity in recent_activities %}
+                <div>
+                    <a href="{{url_for('edit_prepared_activity', activity_day = day.id, prepared_activity = recent_activity.id) }}">
+                        {{recent_activity.name}}</a></div>
+                {% endfor %}
             </div>
-<br>
-    <div class="schedule_remainder">
-Будний: 60 книга, 30 проект, 30 практика питона (курс или видео), 30 практика по расписанию. <br>
-Выходной: 60 книга, 90 проект (пацаны), 60 практика пит <br>
-Пон: SQL (кн) <br>
-Вт: GIT (к) <br>
-Ср: HTML/CSS (кн) <br>
-ЧТ: Bash (к) <br>
-Пт: HTML/CSS (кн) <br>
-Сб: PY (к) <br>
-Вс: PY (кн) <br>
-</div>
-            <div class="input submit">
-                <input type="submit" class="btn" value="Create an activity" />
+        </div>
+        <br><br>
+        <form action="" method="post" id="textform">
+            <div class="text_input new-day__content">
+                <div class="new-activity__name">{{ form.name.label }}{{ form.name }}</div>
+                <div class="new-day__line"> {{ form.hours.label }}{{ form.hours }}</div>
+                <div class="new-day__line"> {{ form.minutes.label }}{{ form.minutes }}</div>
+                <div class="new-activity__name">{{ form.progress.label }}{{ form.progress }}</div>
             </div>
+        </form>
+        <br>
+        <div class="input submit">
+            <input type="submit" class="btn" value="Create an activity"/>
+        </div>
+    </div>
+    <div class="activities__right">
+        <div class="schedule_remainder">
+            <p>Будний: 60 книга, 30 проект, 30 практика питона (курс или видео), 30 практика по расписанию. </p>
+            <p>Выходной: 60 книга, 90 проект (пацаны), 60 практика пит </p>
+            <p>Пон: SQL (кн) </p>
+            <p>Вт: GIT (к) </p>
+            <p>Ср: HTML/CSS (кн) </p>
+            <p>ЧТ: Bash (к) </p>
+            <p>Пт: HTML/CSS (кн) </p>
+            <p>Сб: PY (к) </p>
+            <p>Вс: PY (кн) </p>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

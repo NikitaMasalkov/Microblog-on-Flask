@@ -324,13 +324,22 @@ a:link {
 }
 
 .schedule_remainder {
-    position: absolute;
-  left: 40%;
-  top: 55%;
-    padding-left: 10px;
-    padding-right: 10px;
     background-color: cornsilk;
     font-size: 20px;
     color: black;
-    width: 700px;
+    width: 100%;
+}
+
+.activities__line {
+    display: flex;
+    align-items: flex-start;
+}
+
+.activities__left {
+
+}
+
+.activities__right {
+    padding-left: 30px;
+    flex-grow: 1;
 }
