@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d006d97e-25e0-472e-8d62-0be0c7a2e7dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/edit_conclusion.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_conclusion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/prepared_activity.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/prepared_activity.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,10 +34,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1801" />
-          <entry key="HTML" value="2482" />
-          <entry key="PLAIN_TEXT" value="547" />
-          <entry key="Python" value="1601" />
+          <entry key="CSS" value="1916" />
+          <entry key="HTML" value="2629" />
+          <entry key="PLAIN_TEXT" value="652" />
+          <entry key="Python" value="1604" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -58,10 +59,10 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="756" />
-          <entry key="css" value="1801" />
-          <entry key="html" value="2482" />
-          <entry key="py" value="845" />
-          <entry key="txt" value="547" />
+          <entry key="css" value="1916" />
+          <entry key="html" value="2629" />
+          <entry key="py" value="848" />
+          <entry key="txt" value="652" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -97,11 +98,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/templates/edit_activities.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="529">
-                  <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+                <state relative-caret-position="-15">
+                  <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="41" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -124,11 +125,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/edit_conclusion.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+                <state relative-caret-position="345">
+                  <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
                 </state>
               </provider>
             </entry>
@@ -149,11 +150,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/templates/prepared_activity.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="759">
-                  <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+                <state relative-caret-position="399">
+                  <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -182,8 +183,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/comments.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="18" column="62" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="62" />
+                <state relative-caret-position="148">
+                  <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -209,8 +210,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/edit_activities.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="690">
-                  <caret line="30" selection-start-line="30" selection-end-line="30" />
+                <state relative-caret-position="667">
+                  <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -218,13 +219,13 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/static/styles/table.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7314">
-                  <caret line="318" column="11" selection-start-line="318" selection-start-column="11" selection-end-line="318" selection-end-column="11" />
+                <state relative-caret-position="205">
+                  <caret line="325" column="18" selection-start-line="325" selection-start-column="18" selection-end-line="325" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="207">
@@ -315,9 +316,6 @@
         <option value="$PROJECT_DIR$/app/templates/edit_activity.html" />
         <option value="$PROJECT_DIR$/app/templates/edit_overall.html" />
         <option value="$PROJECT_DIR$/app/templates/comments.html" />
-        <option value="$PROJECT_DIR$/app/templates/edit_activities.html" />
-        <option value="$PROJECT_DIR$/app/templates/prepared_activity.html" />
-        <option value="$PROJECT_DIR$/app/static/styles/table.css" />
         <option value="$PROJECT_DIR$/app/routes.py" />
         <option value="$PROJECT_DIR$/app/templates/approve_activity.html" />
         <option value="$PROJECT_DIR$/app/templates/login.html" />
@@ -326,7 +324,10 @@
         <option value="$PROJECT_DIR$/app/templates/register.html" />
         <option value="$PROJECT_DIR$/app/templates/activity_manager.html" />
         <option value="$PROJECT_DIR$/app/templates/edit_conclusion.html" />
+        <option value="$PROJECT_DIR$/app/templates/edit_activities.html" />
+        <option value="$PROJECT_DIR$/app/static/styles/table.css" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/templates/prepared_activity.html" />
       </list>
     </option>
   </component>
@@ -631,15 +632,37 @@
       <option name="project" value="LOCAL" />
       <updated>1545172401835</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Final commit for heroku. Let this app be like that.">
+      <created>1545173204680</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1545173204680</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Final commit for heroku. Let this app be like that.">
+      <created>1545173228796</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1545173228797</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Still need some visual improvement">
+      <created>1545177970736</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1545177970736</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.21275072" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21275072" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49928468" weight="0.32951653" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -648,9 +671,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49928367" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.8022923" weight="0.38554215" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.8022923" visible="true" weight="0.38554215" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19770774" side_tool="true" weight="0.87349397" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.51002866" visible="true" weight="0.28674698" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.51002866" weight="0.28674698" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -724,7 +747,9 @@
     <MESSAGE value="Guess what? Completion mark!" />
     <MESSAGE value="returning" />
     <MESSAGE value="returning2" />
-    <option name="LAST_COMMIT_MESSAGE" value="returning2" />
+    <MESSAGE value="Final commit for heroku. Let this app be like that." />
+    <MESSAGE value="Still need some visual improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Still need some visual improvement" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/templates/delete_activity.html">
@@ -779,20 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/edit_overall.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/prepared_activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -803,31 +814,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/approve_activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/new_day.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/edit_activities.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/styles/table.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7314">
-          <caret line="318" column="11" selection-start-line="318" selection-start-column="11" selection-end-line="318" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -858,6 +848,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/comments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/edit_conclusion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/activity_manager.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -865,17 +869,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/comments.html">
+    <entry file="file://$PROJECT_DIR$/app/static/styles/table.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="18" column="62" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="62" />
+        <state relative-caret-position="205">
+          <caret line="325" column="18" selection-start-line="325" selection-start-column="18" selection-end-line="325" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/edit_conclusion.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/edit_overall.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -886,6 +890,27 @@
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/approve_activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/edit_activities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/prepared_activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
         </state>
       </provider>
     </entry>
