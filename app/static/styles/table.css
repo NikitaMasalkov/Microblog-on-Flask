@@ -330,6 +330,11 @@ a:link {
     width: 100%;
 }
 
+.schedule_remainder a {
+    color: darkblue;
+    text-decoration: underline;
+}
+
 .activities__line {
     display: flex;
     align-items: flex-start;
