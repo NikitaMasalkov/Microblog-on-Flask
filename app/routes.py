@@ -451,8 +451,10 @@ def activity_manager():
     days = Day.query.all()
     posts = Post.query.all()
     total_time = Time.query.get(1)
+    remainder = 10000 - total_time.hours
 
-    return render_template('activity_manager.html', days = days, posts = posts, total_time = total_time)
+    return render_template('activity_manager.html', days = days, posts = posts, total_time = total_time,
+                           remainder = remainder)
 
 
 def date_format(date_):
