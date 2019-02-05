@@ -40,8 +40,8 @@
         <counts>
           <entry key="CSS" value="2029" />
           <entry key="HTML" value="2909" />
-          <entry key="PLAIN_TEXT" value="874" />
-          <entry key="Python" value="2037" />
+          <entry key="PLAIN_TEXT" value="902" />
+          <entry key="Python" value="2321" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -62,11 +62,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="915" />
+          <entry key="Python Console" value="1180" />
           <entry key="css" value="2029" />
           <entry key="html" value="2909" />
-          <entry key="py" value="1122" />
-          <entry key="txt" value="874" />
+          <entry key="py" value="1141" />
+          <entry key="txt" value="902" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,8 +88,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/routes.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="421" column="43" selection-start-line="421" selection-start-column="43" selection-end-line="421" selection-end-column="43" />
+                <state relative-caret-position="181">
+                  <caret line="421" selection-start-line="421" selection-end-line="421" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
                   </folding>
@@ -254,8 +254,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+                <state relative-caret-position="207">
+                  <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -351,7 +351,6 @@
         <option value="$PROJECT_DIR$/app/templates/approve_activity.html" />
         <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/app/templates/index.html" />
-        <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/register.html" />
         <option value="$PROJECT_DIR$/app/templates/edit_conclusion.html" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
@@ -363,6 +362,7 @@
         <option value="$PROJECT_DIR$/app/static/styles/table.css" />
         <option value="$PROJECT_DIR$/app/templates/activity_manager.html" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/routes.py" />
       </list>
     </option>
@@ -374,8 +374,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="22" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -738,11 +739,35 @@
       <option name="project" value="LOCAL" />
       <updated>1548940704555</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Trying to make sorting">
+      <created>1549394478825</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1549394478825</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Trying to make sorting">
+      <created>1549395372581</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1549395372581</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
@@ -753,11 +778,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49928367" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.8022923" visible="true" weight="0.28674698" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.19770774" side_tool="true" weight="0.87349397" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.51002866" weight="0.28674698" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.80157596" weight="0.28674698" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28080228" side_tool="true" visible="true" weight="0.28674698" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.7191977" visible="true" weight="0.28674698" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -811,7 +836,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Won't push" />
     <MESSAGE value="Finally made dropdown. Time to merge into master" />
     <MESSAGE value="Merge branch 'crushed_everythyng_lol' of https://github.com/NikitaMasalkov/Microblog-on-Flask&#10;&#10;# Conflicts:&#10;#&#9;app/app.db" />
     <MESSAGE value="I should read git documentation" />
@@ -836,7 +860,8 @@
     <MESSAGE value="Will this end? Fixed forms, added roadmap link" />
     <MESSAGE value="Fixing sorting" />
     <MESSAGE value="Added subrtractor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added subrtractor" />
+    <MESSAGE value="Trying to make sorting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to make sorting" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/templates/delete_activity.html">
@@ -912,13 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/edit_conclusion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -983,8 +1001,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/edit_activities.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1127">
-          <caret line="49" column="112" selection-start-line="49" selection-start-column="112" selection-end-line="49" selection-end-column="112" />
+        <state relative-caret-position="1265">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1008,22 +1026,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.py">
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="421" column="43" selection-start-line="421" selection-start-column="43" selection-end-line="421" selection-end-column="43" />
+        <state relative-caret-position="207">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+    <entry file="file://$PROJECT_DIR$/app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="115">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="421" selection-start-line="421" selection-end-line="421" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

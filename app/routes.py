@@ -419,7 +419,7 @@ def edit_profile():
 
 @app.route('/activity_manager', methods=['GET', 'POST'])
 def activity_manager():
-    days = Day.query.order_by(Day.desc()).all()
+    days = Day.query.order_by('id desc').all()
 
     for day in days:
         if day.overall == None:
